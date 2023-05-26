@@ -52,7 +52,6 @@ export default function IndexPage() {
             <header className="flex items-center justify-end gap-3.5 pt-3.5">
               <Dialog>
                 <DialogTrigger>
-                  {" "}
                   <Icons.heart className="h-6 w-6" />
                 </DialogTrigger>
                 <DialogContent>

@@ -1,4 +1,5 @@
-import { SiteHeader } from "@/components/site-header"
+import NavBottom from "@/components/NavBottom"
+import NavTop from "@/components/NavTop"
 
 interface LayoutProps {
   children: React.ReactNode
@@ -7,8 +8,9 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <>
-      <SiteHeader />
+      <NavTop />
       <main>{children}</main>
+      <NavBottom />
     </>
   )
 }
