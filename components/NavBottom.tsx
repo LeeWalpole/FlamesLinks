@@ -10,7 +10,7 @@ export default function NavBottom() {
   const pathname = usePathname()
 
   return (
-    <footer className="fixed bottom-0 z-40 h-12 w-full border-t bg-background">
+    <footer className="fixed bottom-0 z-40 h-14 w-full border-t bg-background">
       <nav className="grid-cols-auto m-auto grid h-full w-96 grid-flow-col items-stretch justify-stretch bg-background align-middle ">
         <Link href="/" className="flex items-center justify-center ">
           {pathname === "/" ? (
