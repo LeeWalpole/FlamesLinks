@@ -69,7 +69,7 @@ export default function NavTop() {
         <div className="container flex h-16 w-full items-center justify-end space-x-4 ">
           <Sheet>
             <SheetTrigger>
-              <BeakerIcon className="h-6 w-6 text-blue-500" />
+              <Icons.profile className="h-6 w-6" />
             </SheetTrigger>
             <SheetContent>
               {/* <SheetTitle></SheetTitle> */}
