@@ -23,7 +23,7 @@ const images = [
 export default function IndexPage() {
   return (
     <>
-      <section className="feed relative top-[-4rem] m-auto  flex flex-row gap-7 sm:top-0  sm:w-96 ">
+      <section className="feed relative top-[-4rem] m-auto  flex flex-row gap-7  sm:w-96 ">
         <article className="w-full ">
           <figure className="relative aspect-[1/1] w-full">
             <Swiper
