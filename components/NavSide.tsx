@@ -2,14 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Bars2Icon, BeakerIcon, HeartIcon } from "@heroicons/react/24/outline"
-import {
-  Bars2Icon as Bars2IconSolid,
-  BeakerIcon as BeakerIconSolid,
-  HeartIcon as HeartIconSolid,
-} from "@heroicons/react/24/solid"
 
 import { SheetTrigger } from "@/components/ui/sheet"
+import { Icons } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function NavSide() {
@@ -20,21 +15,31 @@ export default function NavSide() {
         <Link href="/" className="b-2 w-full border-b p-3.5 text-lg">
           <SheetTrigger className="flex w-full flex-row justify-start gap-4 align-middle font-semibold ">
             {pathname === "/" ? (
-              <BeakerIconSolid className="h-7 w-7 text-blue-500 " />
+              <Icons.homeSolid className="h-6 w-6 " />
             ) : (
-              <BeakerIcon className="h-7 w-7" />
+              <Icons.home className="h-6 w-6" />
             )}
             Home
           </SheetTrigger>
         </Link>
-        <Link href="/discover" className="b-2 w-full border-b p-3.5  text-lg">
+        <Link href="/about" className="b-2 w-full border-b p-3.5  text-lg">
           <SheetTrigger className="flex w-full flex-row justify-start gap-4  align-middle font-semibold ">
-            {pathname === "/discover" ? (
-              <BeakerIconSolid className="h-7 w-7 text-blue-500 " />
+            {pathname === "/about" ? (
+              <Icons.homeSolid className="h-6 w-6 " />
             ) : (
-              <BeakerIcon className="h-7 w-7" />
+              <Icons.home className="h-6 w-6" />
             )}
-            Discover
+            About
+          </SheetTrigger>
+        </Link>
+        <Link href="/profile" className="b-2 w-full border-b p-3.5  text-lg">
+          <SheetTrigger className="flex w-full flex-row justify-start gap-4  align-middle font-semibold ">
+            {pathname === "/profile" ? (
+              <Icons.homeSolid className="h-6 w-6 " />
+            ) : (
+              <Icons.home className="h-6 w-6" />
+            )}
+            Profile
           </SheetTrigger>
         </Link>
       </nav>

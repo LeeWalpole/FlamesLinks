@@ -2,12 +2,6 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Bars2Icon, BeakerIcon, HeartIcon } from "@heroicons/react/24/outline"
-import {
-  Bars2Icon as Bars2IconSolid,
-  BeakerIcon as BeakerIconSolid,
-  HeartIcon as HeartIconSolid,
-} from "@heroicons/react/24/solid"
 
 import {
   Sheet,
@@ -51,7 +45,7 @@ export default function NavTop() {
         <div className="container flex w-full items-center  justify-start space-x-4 ">
           <Sheet>
             <SheetTrigger>
-              <Bars2Icon className="h-6 w-6 text-blue-500" />
+              <Icons.nav className="h-6 w-6 " />
             </SheetTrigger>
             <SheetContent position="left" size="default">
               {/* <SheetTitle></SheetTitle> */}
