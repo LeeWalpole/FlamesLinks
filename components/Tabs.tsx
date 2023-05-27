@@ -12,8 +12,6 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Icons } from "@/components/icons"
 
-import { Separator } from "./ui/separator"
-
 export function ProfileTabs() {
   return (
     <Tabs defaultValue="links" className="w-full">
@@ -62,7 +60,7 @@ export function ProfileTabs() {
           <CardHeader>
             <CardTitle>Password</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you'll be logged out.
+              Change your password here. After saving, you will be logged out.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -85,7 +83,7 @@ export function ProfileTabs() {
           <CardHeader>
             <CardTitle>Password</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you'll be logged out.
+              Change your password here. After saving, you will be logged out.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">

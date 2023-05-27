@@ -67,8 +67,8 @@ export default function IndexPage() {
               </Dialog>
             </div>
           </section>
-          <ProfileTabs />
-          {/* <div className="cta-buttons flex items-center justify-between p-3.5">
+          {/* <ProfileTabs /> */}
+          <div className="cta-buttons flex items-center justify-between p-3.5">
             <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
               <Button variant="secondary">
                 <Icons.instagram className="h-6 w-6" />
@@ -93,7 +93,7 @@ export default function IndexPage() {
                 mywebsite.com
               </Button>
             </div>
-          </div> */}
+          </div>
         </article>
       </section>
     </>
