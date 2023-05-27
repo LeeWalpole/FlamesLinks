@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Swiper from "@/components/Swiper"
+import { ProfileTabs } from "@/components/Tabs"
 import { Icons } from "@/components/icons"
 
 // import Carousel from '$lib/components/Carousel.svelte';
@@ -66,7 +67,8 @@ export default function IndexPage() {
               </Dialog>
             </div>
           </section>
-          <div className="cta-buttons flex items-center justify-between p-3.5">
+          <ProfileTabs />
+          {/* <div className="cta-buttons flex items-center justify-between p-3.5">
             <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
               <Button variant="secondary">
                 <Icons.instagram className="h-6 w-6" />
@@ -79,6 +81,7 @@ export default function IndexPage() {
               </Button>
             </div>
           </div>
+
           <div className="cta-buttons flex items-center justify-between p-3.5">
             <div className="grid-cols-auto grid w-full grid-flow-row gap-3">
               <Button>
@@ -90,7 +93,7 @@ export default function IndexPage() {
                 mywebsite.com
               </Button>
             </div>
-          </div>
+          </div> */}
         </article>
       </section>
     </>
