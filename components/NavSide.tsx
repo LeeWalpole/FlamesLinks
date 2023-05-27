@@ -24,7 +24,7 @@ export default function NavSide() {
           </SheetTrigger>
         </Link>
         <Link href="/about" className="b-2 w-full border-b p-3.5  text-lg">
-          <SheetTrigger className="flex w-full flex-row justify-start gap-4  align-middle font-semibold ">
+          <SheetTrigger className="flex w-full flex-row justify-start gap-4 align-middle font-semibold ">
             {pathname === "/about" ? (
               <Icons.homeSolid className="h-6 w-6 " />
             ) : (

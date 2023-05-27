@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import {
   Sheet,
@@ -17,6 +18,7 @@ import { Icons } from "@/components/icons"
 
 export default function NavTop() {
   const [showNavbar, setShowNavbar] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +62,7 @@ export default function NavTop() {
             <Icons.twitter className="h-5 w-5 fill-current" />
           </Link>
         </div>
-        <div className="container flex h-16 w-full items-center justify-end space-x-4 ">
+        <div className="container flex h-16 w-full items-center justify-end space-x-5 ">
           <Sheet>
             <SheetTrigger>
               <Icons.profile className="h-6 w-6" />
@@ -72,6 +74,14 @@ export default function NavTop() {
               <Notifications />
             </SheetContent>
           </Sheet>
+
+          <Link href="/notifications" className="">
+            {pathname === "/notifications" ? (
+              <Icons.notificationsSolid className="h-6 w-6" />
+            ) : (
+              <Icons.notifications className="h-6 w-6" />
+            )}
+          </Link>
         </div>
       </nav>
     </header>
