@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import CardComp from "@/components/Card"
 
 export default function AboutPage() {
   return (
@@ -22,6 +23,7 @@ export default function AboutPage() {
           Accessible and customizable components that you can copy and paste
           into your apps. Free. Open Source. And Next.js 13 Ready.
         </p>
+        <CardComp />
       </div>
       <div className="flex gap-4">
         <Dialog>

@@ -31,6 +31,7 @@ export default function IndexPage() {
               imageClassName="object-fill w-full h-full aspect-[1/1]"
             />
           </figure>
+
           <section className="relative z-10 mt-[-20px] grid grid-cols-[auto,1fr,auto] gap-3.5 overflow-visible rounded-t-[20px] px-3.5">
             <div className="avatar z-10 mt-[-25px]">
               <div className="ring-offset-base-100 h-28 w-28 rounded-full ring ring-primary ring-offset-2">
@@ -44,12 +45,12 @@ export default function IndexPage() {
                 </Avatar>
               </div>
             </div>
-            <header className="flex flex-col items-start justify-center pt-3.5">
-              <h5 className="text-md font-bold">Display Name</h5>
-              <p className="text-sm">@username</p>
+            <header className="ml-1.5 flex flex-col items-start justify-center pt-3.5">
+              <h5 className="text-lg font-bold">Display Name</h5>
+              <p className="text-xs">@username</p>
             </header>
 
-            <header className="flex items-center justify-end gap-3.5 pt-3.5">
+            <div className="flex items-center justify-end gap-3.5 pt-3.5">
               <Dialog>
                 <DialogTrigger>
                   <Icons.heart className="h-6 w-6" />
@@ -63,7 +64,7 @@ export default function IndexPage() {
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
-            </header>
+            </div>
           </section>
           <div className="cta-buttons flex items-center justify-between p-3.5">
             <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
