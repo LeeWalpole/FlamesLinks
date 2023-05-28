@@ -39,13 +39,16 @@ const SwiperComponent: React.FC<SwiperProps> = ({ images, imageClassName }) => {
     >
       {images.map((image, index) => (
         <SwiperSlide key={index}>
-          <img
+          <Image
+            width={150}
+            height={150}
             src={image}
             alt={`Slide ${index + 1}`}
             className={imageClassName}
           />
         </SwiperSlide>
       ))}
+      <span className="absolute bottom-0 left-0 z-[1] h-16 w-full bg-gradient-to-t from-background via-transparent to-transparent"></span>
     </Swiper>
   )
 }
