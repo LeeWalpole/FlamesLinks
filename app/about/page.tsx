@@ -56,8 +56,8 @@ const cardsProps = [
 export default function AboutPage() {
   return (
     <>
-      <section className="pl-7">
-        <header className="mb-7">
+      <section className="pl-8">
+        <header className="mb-8">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
             Featured
           </h1>

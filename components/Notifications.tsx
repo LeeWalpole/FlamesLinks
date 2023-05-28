@@ -32,10 +32,11 @@ type CardProps = React.ComponentProps<typeof Card>
 
 export default function CardDemo({ className, ...props }: CardProps) {
   return (
-    <Card className={cn("w-[380px]", className)} {...props}>
+    // <Card className={cn("w-[380px]", className)} {...props}>
+    <Card className={cn("w-full", className)} {...props}>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
-        <CardDescription>You have 3 unread messages.</CardDescription>
+        <CardDescription>You have 3 new ntifications.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className=" flex items-center space-x-4 rounded-md border p-4">
@@ -71,7 +72,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
       </CardContent>
       <CardFooter>
         <Button className="w-full">
-          <Check className="mr-2 h-4 w-4" /> Mark all as read
+          <Check className="mr-2 h-4 w-4" /> All done.
         </Button>
       </CardFooter>
     </Card>

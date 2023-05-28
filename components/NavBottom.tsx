@@ -35,13 +35,13 @@ export default function NavBottom() {
             <Icons.profile className="h-6 w-6" />
           )}
         </Link>
-        <Link href="/grid" className="flex items-center justify-center">
+        {/* <Link href="/grid" className="flex items-center justify-center">
           {pathname === "/grid" ? (
             <Icons.search className="h-6 w-6 " />
           ) : (
             <Icons.search className="h-6 w-6" />
           )}
-        </Link>
+        </Link> */}
       </nav>
     </footer>
   )

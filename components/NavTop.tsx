@@ -5,6 +5,14 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import {
   Sheet,
   SheetContent,
   SheetDescription,
@@ -44,7 +52,7 @@ export default function NavTop() {
       `}
     >
       <nav className="grid w-full auto-cols-fr grid-cols-3">
-        <div className="container flex w-full items-center  justify-start space-x-4 ">
+        <div className="container flex w-full items-center justify-start space-x-4 ">
           <Sheet>
             <SheetTrigger>
               <Icons.nav className="h-6 w-6 " />
@@ -63,13 +71,20 @@ export default function NavTop() {
           </Link>
         </div>
         <div className="container flex h-16 w-full items-center justify-end space-x-5 ">
-          <Link href="/notifications" className="">
-            {pathname === "/notifications" ? (
-              <Icons.notificationsSolid className="h-6 w-6" />
-            ) : (
+          <Dialog>
+            <DialogTrigger className="h-full  px-4">
               <Icons.notifications className="h-6 w-6" />
-            )}
-          </Link>
+            </DialogTrigger>
+            <DialogContent>
+              {/* <DialogHeader>
+                <DialogTitle>Do Something!</DialogTitle>
+                <DialogDescription>
+                  This is a very smart modal.
+                </DialogDescription>
+              </DialogHeader> */}
+              <Notifications />
+            </DialogContent>
+          </Dialog>
         </div>
       </nav>
     </header>
