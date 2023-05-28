@@ -52,21 +52,24 @@ export default function NavTop() {
         }
       `}
     >
-      <nav className="grid w-full auto-cols-fr grid-cols-3">
-        <div className=" flex w-full items-center justify-start pl-4">
+      <nav className="grid w-full auto-cols-fr grid-cols-3 ">
+        <div className=" flex w-full items-center justify-start pl-2">
           {pathname === "/profile" ? (
             <button
               type="button"
-              className=" p-4"
+              className="h-full px-2"
               onClick={() => router.back()}
             >
-              <Icons.arrowLeft className="h-6 w-6 " />
+              <Icons.arrowLeft className="h-8 w-8 " />
             </button>
           ) : (
-            <Link href="/">
+            <Link
+              href="/"
+              className="flex h-full items-center justify-center px-2"
+            >
               {/* <Icons.twitter className="h-5 w-5 fill-current" /> */}
               <Image
-                className="h-8 w-auto px-4"
+                className="h-8 w-auto "
                 src="/flames-icon.webp"
                 height={100}
                 width={100}
@@ -76,9 +79,9 @@ export default function NavTop() {
           )}
         </div>
         <div className="flex h-16 w-full items-center  justify-center"></div>
-        <div className=" flex h-16 w-full items-center justify-end pr-4">
+        <div className=" flex h-16 w-full items-center justify-end pr-2">
           <Dialog>
-            <DialogTrigger className="h-full px-4">
+            <DialogTrigger className="h-full px-2  text-slate-600">
               <Icons.notifications className="h-6 w-6" />
             </DialogTrigger>
             <DialogContent>
@@ -92,7 +95,7 @@ export default function NavTop() {
             </DialogContent>
           </Dialog>
           <Sheet>
-            <SheetTrigger className="px-4">
+            <SheetTrigger className="px-2">
               <Icons.nav className="h-6 w-6 " />
             </SheetTrigger>
             <SheetContent position="right" size="default">
