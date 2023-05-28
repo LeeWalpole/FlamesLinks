@@ -5,7 +5,7 @@ import { Icons } from "@/components/icons"
 
 interface ProfileCardProps {
   images: string[]
-  style?: "simple" | "card" | "full"
+  style?: "simple" | "card" | "full" | "carousel"
   shuffle?: boolean
 }
 
@@ -17,6 +17,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   const isSimpleStyle = style === "simple" // Check if style is 'simple'
   const isCardStyle = style === "card" // Check if style is 'card'
   const isCardFull = style === "full" // Check if style is 'full'
+  const isCarousel = style === "carousel" // Check if style is 'full'
   return (
     <>
       <section className="relative m-auto flex w-full flex-row gap-7 sm:w-96 ">

@@ -23,22 +23,22 @@ export default function NavSide() {
             Home
           </SheetTrigger>
         </Link>
-        <Link href="/about" className="b-2 w-full border-b p-3.5  text-lg">
+        <Link href="/discover" className="b-2 w-full border-b p-3.5  text-lg">
           <SheetTrigger className="flex w-full flex-row justify-start gap-4 align-middle font-semibold ">
-            {pathname === "/about" ? (
-              <Icons.homeSolid className="h-6 w-6 " />
+            {pathname === "/discover" ? (
+              <Icons.search className="h-6 w-6 " />
             ) : (
-              <Icons.home className="h-6 w-6" />
+              <Icons.search className="h-6 w-6" />
             )}
-            About
+            Discover
           </SheetTrigger>
         </Link>
         <Link href="/profile" className="b-2 w-full border-b p-3.5  text-lg">
           <SheetTrigger className="flex w-full flex-row justify-start gap-4  align-middle font-semibold ">
             {pathname === "/profile" ? (
-              <Icons.homeSolid className="h-6 w-6 " />
+              <Icons.profile className="h-6 w-6 " />
             ) : (
-              <Icons.home className="h-6 w-6" />
+              <Icons.profileSolid className="h-6 w-6" />
             )}
             Profile
           </SheetTrigger>

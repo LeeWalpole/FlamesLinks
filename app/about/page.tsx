@@ -1,53 +1,60 @@
 import Carousel from "@/components/Carousel"
+import ProfileCarousel from "@/components/Profile-Card"
+
+const images = [
+  "https://github.com/shadcn.png",
+  "https://via.placeholder.com/400x500.png?text=Image+2",
+  "https://via.placeholder.com/400x500.png?text=Image+3",
+]
 
 const cardsProps = [
   {
-    title: "Image 1",
+    title: "Display Name",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 2",
+    title: "Display Name 2",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 3",
+    title: "Display Name 3",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 1",
+    title: "Display Name 1",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 2",
+    title: "Display Name 2",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 1",
+    title: "Display Name 1",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 2",
+    title: "Display Name 2",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 3",
+    title: "Display Name 3",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 1",
+    title: "Display Name Namee 1",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },
   {
-    title: "Image 2",
+    title: "Display Name 2",
     link: "/",
     imageURL: "https://github.com/shadcn.png",
   },

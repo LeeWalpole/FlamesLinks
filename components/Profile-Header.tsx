@@ -17,25 +17,29 @@ export default function ProfileHeader() {
     <section className="relative z-10 grid grid-cols-[auto,1fr,auto] gap-4 overflow-visible rounded-t-[20px] px-2 ">
       <div className="avatar z-10 mt-[-50px] ">
         <div className="ring-offset-base-100  h-28 w-28 rounded-full ring ring-primary">
-          <Avatar className="h-28 w-28">
-            <AvatarImage
-              src="https://github.com/shadcn.png"
-              alt="Colm Tuite"
-              className="h-full w-full"
-            />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+          <Link href="/profile">
+            <Avatar className="h-28 w-28">
+              <AvatarImage
+                src="https://github.com/shadcn.png"
+                alt="Colm Tuite"
+                className="h-full w-full"
+              />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </Link>
         </div>
       </div>
-      <header className="bg-grey-800 ml-2 flex flex-col items-start justify-center">
-        <h5 className="text-lg font-bold">Display Name</h5>
-        <p className="text-xs">@username</p>
-      </header>
+      <Link href="/profile" className="bg-grey-800 flex ">
+        <header className="bg-grey-800 ml-0 flex flex-col items-start justify-center">
+          <h5 className="text-lg font-bold text-white">Display Name</h5>
+          <p className="text-xs text-slate-300">@username</p>
+        </header>
+      </Link>
 
       <div className="flex items-center justify-end ">
         <Dialog>
           <DialogTrigger className="h-full px-2">
-            <Icons.heart className="h-6 w-6" />
+            <Icons.dots className="h-6 w-6 text-slate-500" />
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>

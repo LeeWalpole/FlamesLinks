@@ -1,42 +1,90 @@
-import Link from "next/link"
+import Carousel from "@/components/Carousel"
+import ProfileCarousel from "@/components/Profile-Card"
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+const images = [
+  "https://github.com/shadcn.png",
+  "https://via.placeholder.com/400x500.png?text=Image+2",
+  "https://via.placeholder.com/400x500.png?text=Image+3",
+]
 
-export default function DiscoverPage() {
+const cardsProps = [
+  {
+    title: "Display Name",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 3",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 1",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 1",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 3",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name Namee 1",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Display Name 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+]
+
+export default function AboutPage() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Discover
-        </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          Accessible and customizable components that you can copy and paste
-          into your apps. Free. Open Source. And Next.js 13 Ready.
-        </p>
-      </div>
-      <div className="flex gap-4">
-        <Dialog>
-          <DialogTrigger>Open</DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Are you sure absolutely sure?</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-      </div>
-    </section>
+    <>
+      <section className="pl-8">
+        <header className="mb-8">
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+            Discover
+          </h1>
+          <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
+            Explore the most beautiful girls in Thailand.
+          </p>
+        </header>
+        <Carousel images={cardsProps} />
+      </section>
+      <section className="mt-14 pl-7">
+        <header className="mb-7">
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+            Blondes
+          </h1>
+          <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
+            Category example goes here...
+          </p>
+        </header>
+        <Carousel images={cardsProps} />
+      </section>
+    </>
   )
 }

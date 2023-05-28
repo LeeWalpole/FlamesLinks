@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import {
   Dialog,
@@ -39,7 +40,7 @@ export default function NavTop() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
+  const router = useRouter()
   return (
     <header
       className={`
@@ -53,26 +54,31 @@ export default function NavTop() {
     >
       <nav className="grid w-full auto-cols-fr grid-cols-3">
         <div className=" flex w-full items-center justify-start pl-4">
-          <Sheet>
-            <SheetTrigger>
-              <Icons.nav className="h-6 w-6 " />
-            </SheetTrigger>
-            <SheetContent position="left" size="default">
-              {/* <SheetTitle></SheetTitle> */}
-              {/* <SheetDescription>
-              </SheetDescription> */}
-              <NavSide />
-            </SheetContent>
-          </Sheet>
+          {pathname === "/profile" ? (
+            <button
+              type="button"
+              className=" p-4"
+              onClick={() => router.back()}
+            >
+              <Icons.arrowLeft className="h-6 w-6 " />
+            </button>
+          ) : (
+            <Link href="/">
+              {/* <Icons.twitter className="h-5 w-5 fill-current" /> */}
+              <Image
+                className="h-8 w-auto px-4"
+                src="/flames-icon.webp"
+                height={100}
+                width={100}
+                alt="Flames"
+              />
+            </Link>
+          )}
         </div>
-        <div className="flex h-16 w-full items-center  justify-center">
-          <Link href="/">
-            <Icons.twitter className="h-5 w-5 fill-current" />
-          </Link>
-        </div>
+        <div className="flex h-16 w-full items-center  justify-center"></div>
         <div className=" flex h-16 w-full items-center justify-end pr-4">
           <Dialog>
-            <DialogTrigger className="h-full ">
+            <DialogTrigger className="h-full px-4">
               <Icons.notifications className="h-6 w-6" />
             </DialogTrigger>
             <DialogContent>
@@ -85,6 +91,17 @@ export default function NavTop() {
               <Notifications />
             </DialogContent>
           </Dialog>
+          <Sheet>
+            <SheetTrigger className="px-4">
+              <Icons.nav className="h-6 w-6 " />
+            </SheetTrigger>
+            <SheetContent position="right" size="default">
+              {/* <SheetTitle></SheetTitle> */}
+              {/* <SheetDescription>
+              </SheetDescription> */}
+              <NavSide />
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
     </header>

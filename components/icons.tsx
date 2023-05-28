@@ -1,4 +1,7 @@
 import {
+  ArrowBigLeft,
+  ChevronLeft,
+  CircleEllipsis,
   Instagram,
   LucideProps,
   Moon,
@@ -12,7 +15,9 @@ export type Icon = LucideIcon
 
 export const Icons = {
   sun: SunMedium,
+  arrowLeft: ChevronLeft,
   moon: Moon,
+  dots: CircleEllipsis,
   search: Search,
   instagram: Instagram,
   twitter: Twitter,

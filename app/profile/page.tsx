@@ -1,6 +1,3 @@
-import React from "react"
-import Link from "next/link"
-
 import ProfileCard from "@/components/Profile-Card"
 
 const images = [
