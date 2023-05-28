@@ -14,7 +14,7 @@ import { Icons } from "@/components/icons"
 
 export default function ProfileHeader() {
   return (
-    <section className="relative z-10 grid grid-cols-[auto,1fr,auto] gap-4 overflow-visible rounded-t-[20px] px-4">
+    <section className="relative z-10 grid grid-cols-[auto,1fr,auto] gap-4 overflow-visible rounded-t-[20px] px-2 ">
       <div className="avatar z-10 mt-[-50px] ">
         <div className="ring-offset-base-100  h-28 w-28 rounded-full ring ring-primary">
           <Avatar className="h-28 w-28">
@@ -32,9 +32,9 @@ export default function ProfileHeader() {
         <p className="text-xs">@username</p>
       </header>
 
-      <div className="flex items-center justify-end gap-4">
+      <div className="flex items-center justify-end ">
         <Dialog>
-          <DialogTrigger className="h-full  px-4">
+          <DialogTrigger className="h-full px-2">
             <Icons.heart className="h-6 w-6" />
           </DialogTrigger>
           <DialogContent>

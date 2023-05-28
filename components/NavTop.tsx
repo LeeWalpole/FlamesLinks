@@ -52,7 +52,7 @@ export default function NavTop() {
       `}
     >
       <nav className="grid w-full auto-cols-fr grid-cols-3">
-        <div className="container flex w-full items-center justify-start space-x-4 ">
+        <div className=" flex w-full items-center justify-start pl-4">
           <Sheet>
             <SheetTrigger>
               <Icons.nav className="h-6 w-6 " />
@@ -65,14 +65,14 @@ export default function NavTop() {
             </SheetContent>
           </Sheet>
         </div>
-        <div className="container flex h-16 w-full items-center  justify-center space-x-4 ">
+        <div className="flex h-16 w-full items-center  justify-center">
           <Link href="/">
             <Icons.twitter className="h-5 w-5 fill-current" />
           </Link>
         </div>
-        <div className="container flex h-16 w-full items-center justify-end space-x-5 ">
+        <div className=" flex h-16 w-full items-center justify-end pr-4">
           <Dialog>
-            <DialogTrigger className="h-full  px-4">
+            <DialogTrigger className="h-full ">
               <Icons.notifications className="h-6 w-6" />
             </DialogTrigger>
             <DialogContent>
