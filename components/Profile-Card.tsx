@@ -6,22 +6,24 @@ import { Icons } from "@/components/icons"
 interface ProfileCardProps {
   images: string[]
   style?: "simple" | "card" | "full"
+  shuffle?: boolean
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({
   images,
   style = "default",
+  shuffle,
 }) => {
   const isSimpleStyle = style === "simple" // Check if style is 'simple'
   const isCardStyle = style === "card" // Check if style is 'card'
   const isCardFull = style === "full" // Check if style is 'full'
-
   return (
     <>
-      <section className="feed relative top-[-4rem] m-auto  flex flex-row gap-7  sm:w-96 ">
+      <section className="relative m-auto flex w-full flex-row gap-7 sm:w-96 ">
         <article className="w-full ">
           <figure className="relative aspect-[1/1] w-full">
             <Swiper
+              shuffle={shuffle}
               images={images}
               imageClassName="object-fill w-full h-full aspect-[1/1]"
             />

@@ -12,7 +12,7 @@ const images = [
 export default function ProfilePage() {
   return (
     <>
-      <div className="flex">
+      <div className="relative top-[-4rem] flex">
         <ProfileCard images={images} style="card" />
         <ProfileCard images={images} style="full" />
         <ProfileCard images={images} style="simple" />

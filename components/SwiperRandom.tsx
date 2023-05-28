@@ -13,7 +13,7 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 
 // Function to shuffle the array
-function shuffleArray<T>(array: T[]): T[] {
+function shuffleArray(array: string[]) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[array[i], array[j]] = [array[j], array[i]]
@@ -24,16 +24,9 @@ function shuffleArray<T>(array: T[]): T[] {
 interface SwiperProps {
   images: string[]
   imageClassName: string
-  shuffle?: boolean
 }
 
-const SwiperComponent: React.FC<SwiperProps> = ({
-  images,
-  imageClassName,
-  shuffle = false,
-}) => {
-  const shuffledImages = shuffle ? shuffleArray(images) : images
-
+const SwiperComponent: React.FC<SwiperProps> = ({ images, imageClassName }) => {
   return (
     <Swiper
       // install Swiper modules
@@ -45,7 +38,7 @@ const SwiperComponent: React.FC<SwiperProps> = ({
       }}
       navigation
     >
-      {shuffledImages.map((image, index) => (
+      {images.map((image, index) => (
         <SwiperSlide key={index}>
           <Image
             width={150}

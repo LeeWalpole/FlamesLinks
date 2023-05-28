@@ -1,19 +1,29 @@
-export default function AboutPage() {
+import ProfileCard from "@/components/Profile-Card"
+
+const images = [
+  "https://github.com/shadcn.png",
+  "https://via.placeholder.com/400x500.png?text=Image+2",
+  "https://via.placeholder.com/400x500.png?text=Image+3",
+]
+
+export default function ProfileGrid() {
   return (
-    <>
-      {" "}
-      <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-            About
-          </h1>
-          <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-            Accessible and customizable components that you can copy and paste
-            into your apps. Free. Open Source. And Next.js 13 Ready.
-          </p>
-        </div>
-      </section>
-      <section className="grid grid-flow-row "></section>
-    </>
+    <div className="flex flex-wrap gap-10">
+      <ProfileCard images={images} style="card" shuffle={true} />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+    </div>
   )
 }
