@@ -63,18 +63,6 @@ export default function NavTop() {
           </Link>
         </div>
         <div className="container flex h-16 w-full items-center justify-end space-x-5 ">
-          <Sheet>
-            <SheetTrigger>
-              <Icons.profile className="h-6 w-6" />
-            </SheetTrigger>
-            <SheetContent>
-              {/* <SheetTitle></SheetTitle> */}
-              {/* <SheetDescription>
-              </SheetDescription> */}
-              <Notifications />
-            </SheetContent>
-          </Sheet>
-
           <Link href="/notifications" className="">
             {pathname === "/notifications" ? (
               <Icons.notificationsSolid className="h-6 w-6" />

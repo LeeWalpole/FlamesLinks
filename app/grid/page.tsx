@@ -9,21 +9,21 @@ const images = [
 export default function ProfileGrid() {
   return (
     <div className="flex flex-wrap gap-10">
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
+      <ProfileCard images={images} style="card" />
       <ProfileCard images={images} style="card" shuffle={true} />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
     </div>
   )
 }

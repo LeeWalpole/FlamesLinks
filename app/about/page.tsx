@@ -1,15 +1,83 @@
+import Carousel from "@/components/Carousel"
+
+const cardsProps = [
+  {
+    title: "Image 1",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 3",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 1",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 1",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 3",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 1",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+  {
+    title: "Image 2",
+    link: "/",
+    imageURL: "https://github.com/shadcn.png",
+  },
+]
+
 export default function AboutPage() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          About
-        </h1>
-        <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          Accessible and customizable components that you can copy and paste
-          into your apps. Free. Open Source. And Next.js 13 Ready.
-        </p>
-      </div>
-    </section>
+    <>
+      <section className="pl-7">
+        <header className="mb-7">
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+            Featured
+          </h1>
+          <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
+            Featured profiles go here...
+          </p>
+        </header>
+        <Carousel images={cardsProps} />
+      </section>
+      <section className="mt-14 pl-7">
+        <header className="mb-7">
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+            Blondes
+          </h1>
+          <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
+            Category example goes here...
+          </p>
+        </header>
+        <Carousel images={cardsProps} />
+      </section>
+    </>
   )
 }

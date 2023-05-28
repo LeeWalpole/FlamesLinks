@@ -34,7 +34,7 @@ export default function ProfileHeader() {
 
       <div className="flex items-center justify-end gap-3.5 pt-3.5">
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger className="h-full  px-3.5">
             <Icons.heart className="h-6 w-6" />
           </DialogTrigger>
           <DialogContent>
