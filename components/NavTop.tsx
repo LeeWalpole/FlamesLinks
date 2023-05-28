@@ -81,7 +81,7 @@ export default function NavTop() {
         <div className="flex h-16 w-full items-center  justify-center"></div>
         <div className=" flex h-16 w-full items-center justify-end pr-2">
           <Dialog>
-            <DialogTrigger className="h-full px-2  text-slate-600">
+            <DialogTrigger className="h-full px-2  text-muted-foreground">
               <Icons.notifications className="h-6 w-6" />
             </DialogTrigger>
             <DialogContent>

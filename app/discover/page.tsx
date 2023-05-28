@@ -63,7 +63,7 @@ const cardsProps = [
 export default function AboutPage() {
   return (
     <>
-      <section className="pl-8">
+      <section className="pl-4">
         <header className="mb-8">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
             Discover
@@ -74,8 +74,8 @@ export default function AboutPage() {
         </header>
         <Carousel images={cardsProps} />
       </section>
-      <section className="mt-14 pl-7">
-        <header className="mb-7">
+      <section className="mt-14 pl-4">
+        <header className="mb-8">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
             Blondes
           </h1>

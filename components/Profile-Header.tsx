@@ -31,15 +31,15 @@ export default function ProfileHeader() {
       </div>
       <Link href="/profile" className="bg-grey-800 flex ">
         <header className="bg-grey-800 ml-0 flex flex-col items-start justify-center">
-          <h5 className="text-lg font-bold text-white">Display Name</h5>
-          <p className="text-xs text-slate-300">@username</p>
+          <h5 className="text-lg font-bold text-foreground">Display Name</h5>
+          <p className="text-xs text-muted-foreground">@username</p>
         </header>
       </Link>
 
       <div className="flex items-center justify-end ">
         <Dialog>
           <DialogTrigger className="h-full px-2">
-            <Icons.dots className="h-6 w-6 text-slate-500" />
+            <Icons.dots className="h-6 w-6 text-muted-foreground" />
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>

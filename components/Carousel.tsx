@@ -20,7 +20,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ images }) => {
   return (
     <Swiper
       slidesPerView={"auto"}
-      spaceBetween={30}
+      spaceBetween={16}
       className="mySwiper max-w-full"
     >
       {images.map((image, index) => (
@@ -29,19 +29,21 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ images }) => {
             <figure>
               <Link href="/profile">
                 <Image
-                  width={250}
-                  height={250}
+                  width={200}
+                  height={200}
                   src={image.imageURL}
                   alt={`Slide ${index + 1}`}
-                  className="imageClassName" // Replace with your desired image class name
+                  className="imageClassName rounded-xl" // Replace with your desired image class name
                 />
               </Link>
               <figcaption className="bg-grey-800 ml-2 mt-4 flex flex-col items-start justify-center">
-                <h5 className="text-lg font-bold text-white">{image.title}</h5>
-                <p className="text-xs text-slate-300">@{image.title}</p>
+                <h5 className="text-md font-bold text-foreground">
+                  {image.title}
+                </h5>
+                <p className="text-xs text-muted-foreground">@{image.title}</p>
               </figcaption>
             </figure>
-            <div className="cta-buttons flex py-3.5">
+            <div className="cta-buttons flex py-4">
               <div className=" grid text-left">
                 <Button variant="secondary">
                   <Link href="/profile">View Profile</Link>

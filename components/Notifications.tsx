@@ -36,7 +36,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
     <Card className={cn("w-full", className)} {...props}>
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
-        <CardDescription>You have 3 new ntifications.</CardDescription>
+        <CardDescription>You have 3 new notifications.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className=" flex items-center space-x-4 rounded-md border p-4">
@@ -72,7 +72,7 @@ export default function CardDemo({ className, ...props }: CardProps) {
       </CardContent>
       <CardFooter>
         <Button className="w-full">
-          <Check className="mr-2 h-4 w-4" /> All done.
+          <Check className="mr-2 h-4 w-4" /> Not working yet.
         </Button>
       </CardFooter>
     </Card>
