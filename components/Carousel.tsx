@@ -11,12 +11,23 @@ import { Icons } from "@/components/icons"
 
 import "swiper/css/pagination"
 import "swiper/css"
+import { usePathname, useRouter } from "next/navigation"
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 interface ProfileCardProps {
   images: { title: string; link: string; imageURL: string }[]
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ images }) => {
+  let router = useRouter()
   return (
     <Swiper
       slidesPerView={"auto"}

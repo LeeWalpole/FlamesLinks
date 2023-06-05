@@ -12,6 +12,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "via.placeholder.com",
       },
+      {
+        protocol: "https",
+        hostname: "bubblybeaks.com",
+      },
+      {
+        protocol: "https",
+        hostname: "jsonplaceholder.typicode.com",
+      },
     ],
   },
   experimental: {

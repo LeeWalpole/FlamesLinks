@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -28,6 +29,17 @@ export default function NavBottom() {
           )}
         </Link>
 
+        <Link href="/" className="flex h-full items-center justify-center ">
+          {/* <Icons.twitter className="h-5 w-5 fill-current" /> */}
+          <Image
+            className="h-8 w-auto "
+            src="/flames-icon.webp"
+            height={100}
+            width={100}
+            alt="Flames"
+          />
+        </Link>
+
         <Link href="/profile" className="flex items-center justify-center ">
           {pathname === "/profile" ? (
             <Icons.profileSolid className="h-6 w-6 " />
@@ -42,6 +54,14 @@ export default function NavBottom() {
             <Icons.search className="h-6 w-6" />
           )}
         </Link> */}
+
+        <Link href="/" className="flex items-center justify-center">
+          {pathname === "/" ? (
+            <Icons.homeSolid className="h-6 w-6 " />
+          ) : (
+            <Icons.home className=" h-6 w-6" />
+          )}
+        </Link>
       </nav>
     </footer>
   )
