@@ -36,9 +36,9 @@ export default function NavSide() {
         <Link href="/profile" className="b-2 w-full border-b p-3.5  text-lg">
           <SheetTrigger className="flex w-full flex-row justify-start gap-4  align-middle font-semibold ">
             {pathname === "/profile" ? (
-              <Icons.profile className="h-6 w-6 " />
+              <Icons.profileSolid className="h-6 w-6 " />
             ) : (
-              <Icons.profileSolid className="h-6 w-6" />
+              <Icons.profile className="h-6 w-6" />
             )}
             Profile
           </SheetTrigger>

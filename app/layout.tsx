@@ -46,7 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <NavTop />
-            <PageAnalytics />
+
             <main className="relative m-auto min-h-screen py-16 md:max-w-[1240px]">
               {children}
             </main>

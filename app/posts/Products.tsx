@@ -1,6 +1,8 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+
+import Loading from "@/components/Loading"
 
 import Product from "./Product"
 
@@ -25,7 +27,40 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
   }, [])
 
   if (loading) {
-    return <p>Loading...</p>
+    return (
+      <div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+        <div className="my-4 py-1">
+          <Loading />
+        </div>
+      </div>
+    )
   }
 
   return (

@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
+import Loading from "@/components/Loading"
+
 interface Post {
   userId: number
   id: number
@@ -32,7 +34,7 @@ const FetchPost: React.FC<FetchPostProps> = ({ url }) => {
   }, [url])
 
   if (!post) {
-    return <p>Loading...</p>
+    return <Loading />
   }
 
   return (
