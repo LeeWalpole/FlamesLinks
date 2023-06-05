@@ -3,7 +3,10 @@ import Image from "next/image"
 import Link from "next/link"
 
 interface ProductProps {
-  product: ProductData
+  product: {
+    id: number
+    title: string
+  }
 }
 
 const Product: React.FC<ProductProps> = ({ product }) => {

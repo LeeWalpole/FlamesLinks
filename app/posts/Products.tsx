@@ -33,7 +33,10 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
       <section className="products">
         <div className="product-list">
           {products.map((product) => (
-            <Product key={product.id} product={product} />
+            <div>
+              <Product key={product.id} product={product} />
+              <hr className="my-4 py-1" />
+            </div>
           ))}
         </div>
       </section>
