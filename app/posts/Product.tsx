@@ -4,7 +4,7 @@ import Link from "next/link"
 
 interface ProductProps {
   product: {
-    id: number
+    id: number | string
     title: string
   }
 }

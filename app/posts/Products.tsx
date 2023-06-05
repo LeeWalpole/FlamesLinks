@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react"
 import Product from "./Product"
 
 interface ProductData {
-  id: string
+  id: string | number
   title: string
 }
 
