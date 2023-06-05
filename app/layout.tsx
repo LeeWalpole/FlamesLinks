@@ -1,9 +1,11 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import PageAnalytics from "@/components/Analytics"
 import NavBottom from "@/components/NavBottom"
 import NavLeft from "@/components/NavLeft"
 import NavTop from "@/components/NavTop"
@@ -44,14 +46,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <NavTop />
+            <PageAnalytics />
             <main className="relative m-auto min-h-screen py-16 md:max-w-[1240px]">
               {children}
             </main>
+
             <NavBottom />
             <TailwindIndicator />
           </ThemeProvider>
+          <Analytics />
         </body>
       </html>
     </>
   )
 }
+;``
