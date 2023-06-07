@@ -37,13 +37,13 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               {/* Second set of buttons */}
               <div className="cta-buttons mt-4 flex items-center justify-between px-4">
                 <div className="grid w-full grid-cols-2 gap-4">
-                  <Button className="w-half">
-                    <Icons.padlock className="mr-2 h-4 w-4" />
+                  <Button>
+                    <Icons.link className="mr-2 h-5 w-5" />
                     View My Links
                   </Button>
 
-                  <Button className="w-half">
-                    <Icons.padlock className="mr-2 h-4 w-4" />
+                  <Button>
+                    <Icons.tip className="mr-2 h-6 w-6" />
                     Tip Me
                   </Button>
                 </div>
