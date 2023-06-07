@@ -52,20 +52,20 @@ export default function NavTop() {
         }
       `}
     >
-      <nav className="grid w-full auto-cols-fr grid-cols-3 ">
-        <div className=" flex w-full items-center justify-start pl-2">
+      <nav className="grid w-full auto-cols-fr grid-cols-3  px-2">
+        <div className="flex h-16 w-full items-center justify-start">
           {pathname === "/profile" ? (
             <button
               type="button"
-              className="h-full px-2"
+              className="h-full  px-1"
               onClick={() => router.back()}
             >
-              <Icons.arrowLeft className="h-8 w-8 " />
+              <Icons.arrowLeft className="h-6 w-6 " />
             </button>
           ) : (
             <Link
               href="/"
-              className="flex h-full items-center justify-center px-2"
+              className="flex h-full items-center justify-center  px-2"
             >
               {/* <Icons.twitter className="h-5 w-5 fill-current" /> */}
               <Image
@@ -79,23 +79,9 @@ export default function NavTop() {
           )}
         </div>
         <div className="flex h-16 w-full items-center  justify-center"></div>
-        <div className=" flex h-16 w-full items-center justify-end pr-2">
-          <Dialog>
-            <DialogTrigger className="h-full px-2  text-muted-foreground">
-              <Icons.notifications className="h-6 w-6" />
-            </DialogTrigger>
-            <DialogContent>
-              {/* <DialogHeader>
-                <DialogTitle>Do Something!</DialogTitle>
-                <DialogDescription>
-                  This is a very smart modal.
-                </DialogDescription>
-              </DialogHeader> */}
-              <Notifications />
-            </DialogContent>
-          </Dialog>
+        <div className=" flex h-16 w-full items-center justify-end pr-1">
           <Sheet>
-            <SheetTrigger className="px-2">
+            <SheetTrigger className="h-full px-2">
               <Icons.nav className="h-6 w-6 " />
             </SheetTrigger>
             <SheetContent position="right" size="default">

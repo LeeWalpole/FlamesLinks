@@ -20,7 +20,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   const isCarousel = style === "carousel" // Check if style is 'full'
   return (
     <>
-      <section className="relative m-auto flex w-full flex-row gap-7 sm:w-96 ">
+      <section className="relative m-auto flex w-full flex-row  sm:w-96 ">
         <article className="w-full ">
           <figure className="relative aspect-[1/1] w-full">
             <Swiper
@@ -35,8 +35,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
             // Render the following elements only when the style is 'full'
             <>
               {/* Second set of buttons */}
-              <div className="cta-buttons flex items-center justify-between p-3.5">
-                <div className="grid-cols-auto grid w-full grid-flow-row gap-3">
+              <div className="cta-buttons mt-4 flex items-center justify-between px-4">
+                <div className="grid-cols-auto grid w-full grid-flow-row ">
                   <Button>
                     <Icons.padlock className="mr-2 h-4 w-4" />
                     Onlyfans - Premium
@@ -48,7 +48,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 </div>
               </div>
               {/* First set of buttons */}
-              <div className="cta-buttons flex items-center justify-between p-3.5">
+              <div className="cta-buttons flex items-center justify-between p-4">
                 <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
                   <Button variant="secondary">
                     <Icons.instagram className="h-6 w-6" />
@@ -67,7 +67,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
             // Render the following elements when style is neither 'card', 'simple', nor 'full'
             <>
               {/* First set of buttons */}
-              <div className="cta-buttons flex items-center justify-between p-3.5">
+              <div className="cta-buttons flex items-center justify-between p-4">
                 <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
                   <Button variant="secondary">
                     <Icons.instagram className="h-6 w-6" />
@@ -81,7 +81,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 </div>
               </div>
               {/* Second set of buttons */}
-              <div className="cta-buttons flex items-center justify-between p-3.5">
+              <div className="cta-buttons flex items-center justify-between p-4">
                 <div className="grid-cols-auto grid w-full grid-flow-row gap-3">
                   <Button>
                     <Icons.email className="mr-2 h-4 w-4" />
