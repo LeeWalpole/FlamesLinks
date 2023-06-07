@@ -41,10 +41,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                     <Icons.padlock className="mr-2 h-4 w-4" />
                     Onlyfans - Premium
                   </Button>
-                  <Button>
+                  {/* <Button>
                     <Icons.email className="mr-2 h-4 w-4" />
                     mywebsite.com
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
               {/* First set of buttons */}
