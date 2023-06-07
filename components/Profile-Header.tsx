@@ -41,11 +41,63 @@ export default function ProfileHeader() {
           <DialogTrigger className="h-full px-2">
             <Icons.dots className="h-6 w-6 text-muted-foreground" />
           </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Do Something!</DialogTitle>
-              <DialogDescription>This is a very smart modal.</DialogDescription>
-            </DialogHeader>
+          <DialogContent className="rounded-3xl border px-6 py-8">
+            <nav>
+              <Link
+                href=""
+                className="flex w-full items-center space-x-4 border-b p-4"
+              >
+                <Icons.tip className="h-6 w-6 text-brand-normal" />
+                <div className="flex-1 space-y-1">
+                  <p className="text-md font-medium leading-none">
+                    Treat @username
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    Show your love and support.
+                  </p>
+                </div>
+              </Link>
+              <Link
+                href=""
+                className="flex w-full items-center space-x-4 border-b p-4 opacity-50"
+              >
+                <Icons.message className="h-6 w-6 text-brand-normal" />
+                <div className="flex-1 space-y-1">
+                  <p className="text-md font-medium leading-none">
+                    Send Private Message
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    *$0.50 / Message (Coming soon).
+                  </p>
+                </div>
+              </Link>
+              <Link
+                href=""
+                className="flex w-full items-center space-x-4 border-b p-4 opacity-50"
+              >
+                <Icons.phone className="h-6 w-6 text-brand-normal" />
+                <div className="flex-1 space-y-1">
+                  <p className="text-md font-medium leading-none">
+                    Voice Call (Coming soon).
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    *$0.50 / 60 Seconds (Coming soon).
+                  </p>
+                </div>
+              </Link>
+              <Link
+                href=""
+                className="flex w-full items-center space-x-4  p-4 opacity-50"
+              >
+                <Icons.video className="h-6 w-6 text-brand-normal" />
+                <div className="flex-1 space-y-1">
+                  <p className="text-md font-medium leading-none">Video Call</p>
+                  <p className="text-xs text-muted-foreground">
+                    *$1.00 / 60 Seconds (Coming soon).
+                  </p>
+                </div>
+              </Link>
+            </nav>
           </DialogContent>
         </Dialog>
       </div>

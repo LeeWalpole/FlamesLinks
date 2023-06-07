@@ -34,6 +34,19 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           {isCardFull && (
             // Render the following elements only when the style is 'full'
             <>
+              {/* Second set of buttons */}
+              <div className="cta-buttons flex items-center justify-between p-3.5">
+                <div className="grid-cols-auto grid w-full grid-flow-row gap-3">
+                  <Button>
+                    <Icons.padlock className="mr-2 h-4 w-4" />
+                    Onlyfans - Premium
+                  </Button>
+                  <Button>
+                    <Icons.email className="mr-2 h-4 w-4" />
+                    mywebsite.com
+                  </Button>
+                </div>
+              </div>
               {/* First set of buttons */}
               <div className="cta-buttons flex items-center justify-between p-3.5">
                 <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
@@ -41,23 +54,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                     <Icons.instagram className="h-6 w-6" />
                   </Button>
                   <Button variant="secondary">
-                    <Icons.instagram className="h-6 w-6" />
+                    <Icons.twitter className="h-6 w-6" />
                   </Button>
                   <Button variant="secondary">
-                    <Icons.instagram className="h-6 w-6" />
-                  </Button>
-                </div>
-              </div>
-              {/* Second set of buttons */}
-              <div className="cta-buttons flex items-center justify-between p-3.5">
-                <div className="grid-cols-auto grid w-full grid-flow-row gap-3">
-                  <Button>
-                    <Icons.email className="mr-2 h-4 w-4" />
-                    mywebsite.com
-                  </Button>
-                  <Button>
-                    <Icons.link className="mr-2 h-4 w-4" />
-                    mywebsite.com
+                    <Icons.twitch className="h-6 w-6" />
                   </Button>
                 </div>
               </div>
@@ -73,10 +73,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                     <Icons.instagram className="h-6 w-6" />
                   </Button>
                   <Button variant="secondary">
-                    <Icons.instagram className="h-6 w-6" />
+                    <Icons.twitter className="h-6 w-6" />
                   </Button>
                   <Button variant="secondary">
-                    <Icons.instagram className="h-6 w-6" />
+                    <Icons.twitch className="h-6 w-6" />
                   </Button>
                 </div>
               </div>
