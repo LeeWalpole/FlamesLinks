@@ -53,12 +53,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   <Button variant="secondary">
                     <Icons.instagram className="h-6 w-6" />
                   </Button>
-                  <Button variant="secondary">
+                  {/* <Button variant="secondary">
                     <Icons.twitter className="h-6 w-6" />
                   </Button>
                   <Button variant="secondary">
                     <Icons.twitch className="h-6 w-6" />
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </>
