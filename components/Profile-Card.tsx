@@ -36,15 +36,16 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
             <>
               {/* Second set of buttons */}
               <div className="cta-buttons mt-4 flex items-center justify-between px-4">
-                <div className="grid-cols-auto grid w-full grid-flow-row ">
-                  <Button>
+                <div className="grid w-full grid-cols-2 gap-4">
+                  <Button className="w-half">
                     <Icons.padlock className="mr-2 h-4 w-4" />
-                    Onlyfans - Premium
+                    View My Links
                   </Button>
-                  {/* <Button>
-                    <Icons.email className="mr-2 h-4 w-4" />
-                    mywebsite.com
-                  </Button> */}
+
+                  <Button className="w-half">
+                    <Icons.padlock className="mr-2 h-4 w-4" />
+                    Tip Me
+                  </Button>
                 </div>
               </div>
               {/* First set of buttons */}
@@ -53,12 +54,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   <Button variant="secondary">
                     <Icons.instagram className="h-6 w-6" />
                   </Button>
-                  {/* <Button variant="secondary">
+                  <Button variant="secondary">
                     <Icons.twitter className="h-6 w-6" />
                   </Button>
                   <Button variant="secondary">
                     <Icons.twitch className="h-6 w-6" />
-                  </Button> */}
+                  </Button>
                 </div>
               </div>
             </>
