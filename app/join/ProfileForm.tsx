@@ -103,9 +103,12 @@ export function ProfileForm() {
   }
 
   return (
-    <section className="relative m-auto flex w-full flex-row  sm:w-96 ">
+    <section className="relative m-auto flex w-full flex-row p-8 sm:w-96">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-full space-y-8"
+        >
           <FormField
             control={form.control}
             name="username"
