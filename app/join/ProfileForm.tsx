@@ -36,6 +36,14 @@ const profileFormSchema = z.object({
     .max(30, {
       message: "Username must not be longer than 30 characters.",
     }),
+  display_name: z
+    .string()
+    .min(2, {
+      message: "Display Name must be at least 2 characters.",
+    })
+    .max(30, {
+      message: "Username must not be longer than 30 characters.",
+    }),
   email: z
     .string({
       required_error: "Please select an email to display.",
@@ -55,9 +63,9 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
-  username: "hardcoded_username",
+  username: "",
   bio: "I own a computer.",
-  urls: [{ value: "https://www.hardcoded_url.com" }],
+  urls: [{ value: "" }],
 }
 
 // ...
