@@ -55,8 +55,8 @@ export default function NavBottom() {
           )}
         </Link> */}
 
-        <Link href="/posts" className="flex items-center justify-center">
-          {pathname === "/posts" ? (
+        <Link href="/profile/edit" className="flex items-center justify-center">
+          {pathname === "/profile/edit" ? (
             <Icons.homeSolid className="h-6 w-6 " />
           ) : (
             <Icons.home className=" h-6 w-6" />

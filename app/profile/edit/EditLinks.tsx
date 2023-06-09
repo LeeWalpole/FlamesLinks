@@ -28,7 +28,7 @@ import {
   FormMessage,
 } from "@/components/react-hook-form/form"
 
-const profileFormSchema = z.object({
+const EditLinksSchema = z.object({
   username: z
     .string()
     .min(2, {
@@ -68,10 +68,10 @@ const profileFormSchema = z.object({
     .optional(),
 })
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>
+type EditLinksValues = z.infer<typeof EditLinksSchema>
 
 // This can come from your database or API.
-const defaultValues: Partial<ProfileFormValues> = {
+const defaultValues: Partial<EditLinksValues> = {
   username: "",
   bio: "I own a computer.",
   urls: [{ value: "" }],
@@ -79,19 +79,19 @@ const defaultValues: Partial<ProfileFormValues> = {
 
 // ...
 
-export function ProfileForm() {
-  const form = useForm<ProfileFormValues>({
-    resolver: zodResolver(profileFormSchema),
+export function EditLinks() {
+  const form = useForm<EditLinksValues>({
+    resolver: zodResolver(EditLinksSchema),
     defaultValues,
     mode: "onChange",
   })
 
-  const { fields, append, remove } = useFieldArray<ProfileFormValues, "urls">({
+  const { fields, append, remove } = useFieldArray<EditLinksValues, "urls">({
     control: form.control,
     name: "urls",
   })
 
-  function onSubmit(data: ProfileFormValues) {
+  function onSubmit(data: EditLinksValues) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -103,114 +103,12 @@ export function ProfileForm() {
   }
 
   return (
-    <section className="relative m-auto flex w-full flex-row p-8 sm:w-96">
+    <>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="w-full space-y-8"
         >
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem className="mb-8">
-                <FormLabel>Username</FormLabel>
-                {/* 
-            <FormDescription>This is your public display name.</FormDescription> */}
-                <FormControl>
-                  <Input placeholder="Add username..." {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <hr />
-
-          <FormField
-            control={form.control}
-            name="display_name"
-            render={({ field }) => (
-              <FormItem className="mb-8">
-                <FormLabel>Display Name</FormLabel>
-                {/* 
-            <FormDescription>This is your public display name.</FormDescription> */}
-                <FormControl>
-                  <Input placeholder="Add display name..." {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <hr />
-
-          <FormField
-            control={form.control}
-            name="socials_instagram"
-            render={({ field }) => (
-              <FormItem className="mb-8">
-                <FormLabel className="flex justify-between">
-                  <span className="flex items-center justify-between">
-                    <Icons.instagram className="mr-2 h-4 w-4 p-0" />
-                    Instagram
-                  </span>
-                  <span className="text-right text-xs text-muted-foreground">
-                    Example: instagram_username
-                  </span>
-                </FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-xs text-muted-foreground ">
-                      @
-                    </span>
-                    <Input
-                      placeholder="Add Instagram username"
-                      {...field}
-                      className="pl-8"
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="socials_instagram"
-            render={({ field }) => (
-              <FormItem className="mb-8">
-                <FormLabel className="flex justify-between">
-                  <span className="flex items-center justify-between">
-                    <Icons.twitter className="mr-2 h-4 w-4 p-0" />
-                    Twitter
-                  </span>
-                  <span className="text-right text-xs text-muted-foreground">
-                    Example: twitter_handle
-                  </span>
-                </FormLabel>
-                <FormControl>
-                  <div className="relative">
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-xs text-muted-foreground ">
-                      @
-                    </span>
-                    <Input
-                      placeholder="Add Twitter handle"
-                      {...field}
-                      className="pl-8"
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <hr />
-
           <div>
             {fields.map((field, index) => (
               <div key={field.id} className="flex space-x-4">
@@ -288,6 +186,6 @@ export function ProfileForm() {
           </Button>
         </form>
       </Form>
-    </section>
+    </>
   )
 }
