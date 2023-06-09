@@ -94,121 +94,119 @@ export function ProfileForm() {
   }
 
   return (
-    <Form
-      {...form}
-      onSubmit={form.handleSubmit(onSubmit)}
-      className="space-y-8"
-    >
-      <FormField
-        control={form.control}
-        name="username"
-        render={({ field }) => (
-          <FormItem className="mb-8">
-            <FormLabel>Username</FormLabel>
-            {/* 
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem className="mb-8">
+              <FormLabel>Username</FormLabel>
+              {/* 
             <FormDescription>This is your public display name.</FormDescription> */}
-            <FormControl>
-              <Input placeholder="Add username..." {...field} />
-            </FormControl>
+              <FormControl>
+                <Input placeholder="Add username..." {...field} />
+              </FormControl>
 
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-      <hr />
+        <hr />
 
-      <FormField
-        control={form.control}
-        name="display_name"
-        render={({ field }) => (
-          <FormItem className="mb-8">
-            <FormLabel>Display Name</FormLabel>
-            {/* 
+        <FormField
+          control={form.control}
+          name="display_name"
+          render={({ field }) => (
+            <FormItem className="mb-8">
+              <FormLabel>Display Name</FormLabel>
+              {/* 
             <FormDescription>This is your public display name.</FormDescription> */}
-            <FormControl>
-              <Input placeholder="Add display name..." {...field} />
-            </FormControl>
+              <FormControl>
+                <Input placeholder="Add display name..." {...field} />
+              </FormControl>
 
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-      <div>
-        {fields.map((field, index) => (
-          <div key={field.id} className="flex space-x-4">
-            <FormField
-              control={form.control}
-              name={`urls.${index}.value`}
-              render={({ field }) => (
-                <FormItem className="mb-4 w-full">
-                  <FormLabel className={cn(index !== 0 && "sr-only")}>
-                    Add Links / Websites
-                  </FormLabel>
-                  <FormDescription className={cn(index !== 0 && "sr-only")}>
-                    Add links to your website, blog, or social media profiles.
-                  </FormDescription>
-                  <FormControl className="flex w-full">
-                    <section className="flex w-full">
-                      <Input {...field} className="flex-1" />
-                      <div className="buttons ml-4">
-                        <Button
-                          type="button"
-                          variant="link"
-                          className="ml-2 flex-auto text-xs"
-                          onClick={() => remove(index)}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="h-6 w-6"
+        <div>
+          {fields.map((field, index) => (
+            <div key={field.id} className="flex space-x-4">
+              <FormField
+                control={form.control}
+                name={`urls.${index}.value`}
+                render={({ field }) => (
+                  <FormItem className="mb-4 w-full">
+                    <FormLabel className={cn(index !== 0 && "sr-only")}>
+                      Add Links / Websites
+                    </FormLabel>
+                    <FormDescription className={cn(index !== 0 && "sr-only")}>
+                      Add links to your website, blog, or social media profiles.
+                    </FormDescription>
+                    <FormControl className="flex w-full">
+                      <section className="flex w-full">
+                        <Input {...field} className="flex-1" />
+                        <div className="buttons ml-4">
+                          <Button
+                            type="button"
+                            variant="link"
+                            className="ml-2 flex-auto text-xs"
+                            onClick={() => remove(index)}
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
-                        </Button>
-                        <Button
-                          type="button"
-                          variant="link"
-                          className="ml-2 flex-auto text-xs"
-                          onClick={() => append({ value: "" })}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            className="h-6 w-6"
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="h-6 w-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="link"
+                            className="ml-2 flex-auto text-xs"
+                            onClick={() => append({ value: "" })}
                           >
-                            <path
-                              fillRule="evenodd"
-                              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </Button>
-                      </div>
-                    </section>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        ))}
-      </div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              className="h-6 w-6"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </Button>
+                        </div>
+                      </section>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          ))}
+        </div>
 
-      <hr />
+        <hr />
 
-      <Button type="submit" className="mt-8">
-        Submit
-      </Button>
+        <Button type="submit" className="mt-8">
+          Submit
+        </Button>
+      </form>
     </Form>
   )
 }
