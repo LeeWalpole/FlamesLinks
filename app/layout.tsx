@@ -5,9 +5,9 @@ import { Analytics } from "@vercel/analytics/react"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import PageAnalytics from "@/components/Analytics"
+// import PageAnalytics from "@/components/Analytics"
 import NavBottom from "@/components/NavBottom"
-import NavLeft from "@/components/NavLeft"
+// import NavLeft from "@/components/NavLeft"
 import NavTop from "@/components/NavTop"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -36,9 +36,10 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode
+  modal: React.ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -51,12 +52,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <NavTop />
-
             <main className="relative m-auto min-h-screen py-16 md:max-w-[1240px]">
               {children}
             </main>
-
             <NavBottom />
+            {modal}
             <TailwindIndicator />
           </ThemeProvider>
           <Analytics />
@@ -65,4 +65,3 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </>
   )
 }
-;``

@@ -10,6 +10,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "pbs.twimg.com",
+      },
+
+      {
+        protocol: "https",
         hostname: "via.placeholder.com",
       },
       {
@@ -22,6 +27,7 @@ const nextConfig = {
       },
     ],
   },
+
   experimental: {
     appDir: true,
   },

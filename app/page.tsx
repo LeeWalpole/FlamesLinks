@@ -1,29 +1,27 @@
-import ProfileCard from "@/components/Profile-Card"
+import Image from "next/image"
+import Link from "next/link"
 
-const images = [
-  "https://github.com/shadcn.png",
-  "https://via.placeholder.com/400x500.png?text=Image+2",
-  "https://via.placeholder.com/400x500.png?text=Image+3",
-]
+import swagPhotos from "@/components/photos"
 
-export default function ProfileGrid() {
+export default function Home() {
+  const photos = swagPhotos
+
   return (
-    <div className="flex flex-wrap gap-10">
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" />
-      <ProfileCard images={images} style="card" shuffle={true} />
-    </div>
+    <main className="container mx-auto">
+      <h1 className="m-10 text-center text-4xl font-bold">NextGram</h1>
+      <div className="m-10 grid auto-rows-max grid-cols-1 gap-6 sm:grid-cols-2	 md:grid-cols-3 lg:grid-cols-3">
+        {photos.map(({ id, imageSrc }) => (
+          <Link key={id} href={`/photos/${id}`}>
+            <Image
+              alt=""
+              src={imageSrc}
+              height={500}
+              width={500}
+              className="aspect-square w-full object-cover"
+            />
+          </Link>
+        ))}
+      </div>
+    </main>
   )
 }
