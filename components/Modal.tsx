@@ -1,12 +1,6 @@
 "use client"
 
-import {
-  KeyboardEvent,
-  MouseEvent,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react"
+import { KeyboardEvent, useCallback, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 
 interface ModalProps {
@@ -23,7 +17,7 @@ export default function Modal({ children }: ModalProps) {
   }, [router])
 
   const onClick = useCallback(
-    (e: MouseEvent<HTMLDivElement>) => {
+    (e: React.MouseEvent<HTMLDivElement>) => {
       if (e.target === overlay.current || e.target === wrapper.current) {
         if (onDismiss) onDismiss()
       }
@@ -32,7 +26,7 @@ export default function Modal({ children }: ModalProps) {
   )
 
   const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+    (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Escape") onDismiss()
     },
     [onDismiss]
@@ -40,17 +34,17 @@ export default function Modal({ children }: ModalProps) {
 
   useEffect(() => {
     document.body.style.overflow = "hidden" // Prevent body from scrolling
-    document.addEventListener("keydown", onKeyDown)
+    // document.addEventListener("keydown", onKeyDown)
     return () => {
       document.body.style.overflow = "" // Revert body scrolling
-      document.removeEventListener("keydown", onKeyDown)
+      // document.removeEventListener("keydown", onKeyDown)
     }
   }, [onKeyDown])
 
   return (
     <div
       ref={overlay}
-      className="fixed inset-0 z-50 mx-auto bg-black bg-opacity-80"
+      className="fixed inset-0 z-50 mx-auto bg-black/80"
       onClick={onClick}
     >
       <div

@@ -1,6 +1,5 @@
 import Image from "next/image"
 
-import Modal from "@/components/Modal"
 import swagPhotos from "@/components/photos"
 
 interface Photo {
@@ -21,26 +20,27 @@ export default function PhotoModal({
 }: PhotoModalProps) {
   const photos: Photo[] = swagPhotos
   const photo: Photo | undefined =
-    photoId && photos.find((p) => p.id === photoId)
+    photoId !== "" ? photos.find((p) => p.id === photoId) : undefined
+
+  if (!photo) {
+    return null // or you can render a message indicating that the photo is not found
+  }
 
   return (
     <>
-      This is NOT a modal
-      {photo && (
-        <>
-          <Image
-            alt=""
-            src={photo.imageSrc}
-            height={600}
-            width={600}
-            className="col-span-2 aspect-square w-full object-cover"
-          />
-          <div className="bg-white p-4 px-6">
-            <h3>{photo.name}</h3>
-            <p>Taken by {photo.username}</p>
-          </div>
-        </>
-      )}
+      {" "}
+      <h1>Not a Modal</h1>
+      <Image
+        alt=""
+        src={photo.imageSrc}
+        height={600}
+        width={600}
+        className="col-span-2 aspect-square w-full object-cover"
+      />
+      <div className="bg-white p-4 px-6">
+        <h3>{photo.name}</h3>
+        <p>Taken by {photo.username}</p>
+      </div>
     </>
   )
 }
