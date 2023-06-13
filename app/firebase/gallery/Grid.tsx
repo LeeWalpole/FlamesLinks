@@ -160,6 +160,12 @@ export default function Grid() {
     }
   }
 
+  const handleRemoveImage = (index: number) => {
+    const updatedGrid = [...grid]
+    updatedGrid[index].image = null
+    setGrid(updatedGrid)
+  }
+
   return (
     <div>
       <div className={styles.gridContainer}>
@@ -184,6 +190,14 @@ export default function Grid() {
                     height="100"
                     width="100"
                   />
+                )}
+                {square.image && ( // Add this condition to display the remove image button/icon
+                  <button
+                    className="absolute right-0 top-0 z-[99999] block bg-black p-8 text-white"
+                    onClick={() => handleRemoveImage(index)}
+                  >
+                    Remove
+                  </button>
                 )}
                 <input
                   type="file"

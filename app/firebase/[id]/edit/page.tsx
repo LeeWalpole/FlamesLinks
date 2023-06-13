@@ -19,13 +19,13 @@ async function fetchData() {
 
 async function myAction(data: FormData) {
   "use server"
-  const display_name = data.get("display_name")
+  const displayName = data.get("displayName")
   const username = data.get("username")
 
   const docRef = doc(db, "profiles", docID)
 
   const updateData = {
-    display_name: display_name,
+    displayName: displayName,
     username: username,
   }
 
@@ -35,7 +35,7 @@ async function myAction(data: FormData) {
 
   // Revalidate
   // revalidatePath(`/dogs/${params.id}/edit`);
-  revalidatePath(`/profiles/${docID}/edit`)
+  revalidatePath(`/firebase/${docID}/edit`)
 }
 
 export default function EditForm() {
@@ -48,11 +48,11 @@ export default function EditForm() {
           <h1 className="bold mb-4 text-lg">Edit: {todoData?.title}</h1>
           <form action={myAction} className="flex flex-col gap-8">
             <div className="flex flex-row justify-start gap-8">
-              <label>display_name</label>
+              <label>displayName</label>
               <input
-                name="display_name"
+                name="displayName"
                 type="text"
-                defaultValue={todoData?.display_name}
+                defaultValue={todoData?.displayName}
                 className="text-black"
               />
             </div>

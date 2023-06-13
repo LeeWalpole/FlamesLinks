@@ -18,18 +18,6 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 }
 
-/* For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDnl4zbKIpGP-OiuQEUzA7J2Rc78o5VZjk",
-  authDomain: "flamesbio.firebaseapp.com",
-  projectId: "flamesbio",
-  storageBucket: "flamesbio.appspot.com",
-  messagingSenderId: "899359894512",
-  appId: "1:899359894512:web:48bcf2902489007a87cb35",
-  measurementId: "G-XV6B8YW21B",
-}
-*/
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
