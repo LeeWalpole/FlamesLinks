@@ -1,5 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+// import { AuthProvider } from "@/firebase/AuthContext"
 import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
@@ -50,6 +51,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
             fontSans.variable
           )}
         >
+          {/* <AuthProvider> */}
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <NavTop />
             <main className="relative m-auto min-h-screen py-16 md:max-w-[1240px]">
@@ -59,6 +61,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
             {modal}
             <TailwindIndicator />
           </ThemeProvider>
+          {/* </AuthProvider> */}
           <Analytics />
         </body>
       </html>
