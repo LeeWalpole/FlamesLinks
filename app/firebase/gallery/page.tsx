@@ -75,7 +75,7 @@ export default function EditForm() {
                 className="text-white"
               />
             </div>
-            <button type="submit" className="bg-blue-500 p-3">
+            <button type="submit" className="bg-blue-500 p-4">
               Save and Continue
             </button>
           </form>
