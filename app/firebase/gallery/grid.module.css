@@ -1,0 +1,75 @@
+.gridContainer * {
+  margin: 0;
+  padding: 0;
+}
+
+.gridContainer {
+  width: 500px;
+}
+
+.square {
+  width: 150px;
+  overflow: hidden;
+  height: auto;
+  background-color: lightblue;
+  text-align: center;
+  cursor: move;
+  transition: background-color 0.3s;
+  background-image: url("./placeholder.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  aspect-ratio: 1/1;
+  opacity: 1;
+}
+
+.square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.squareContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.dragging {
+  border: 2px dashed gray;
+  opacity: 0.5;
+}
+
+.fileInput {
+  visibility: hidden;
+}
+
+.fileInputLabel {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.feature_image {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.feature_image img {
+  width: 100%;
+  height: 100%;
+}
+
+.feature_image figcaption {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: black;
+  color: white;
+  padding: 6px;
+}

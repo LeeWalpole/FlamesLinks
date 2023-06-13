@@ -1,0 +1,50 @@
+"use client";
+import { useState } from "react";
+import styles from "./grid.module.css";
+import placeholderImage from "./placeholder.png";
+
+const GridComponent = () => {
+  const [grid, setGrid] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const [draggedIndex, setDraggedIndex] = useState(null);
+
+  const handleDragStart = (event, index) => {
+    event.dataTransfer.setData("text/plain", index);
+    setDraggedIndex(index);
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
+  const handleDrop = (event, newIndex) => {
+    const index = parseInt(event.dataTransfer.getData("text/plain"));
+    const newGrid = [...grid];
+    const movedSquare = newGrid.splice(index, 1)[0];
+    newGrid.splice(newIndex, 0, movedSquare);
+    setGrid(newGrid);
+    setDraggedIndex(null);
+  };
+
+  return (
+    <div className={styles.gridContainer}>
+      <div className={styles.squareContainer}>
+        {grid.map((square, index) => (
+          <div
+            key={square}
+            draggable
+            onDragStart={(event) => handleDragStart(event, index)}
+            onDragOver={handleDragOver}
+            onDrop={(event) => handleDrop(event, index)}
+            className={`${styles.square} ${
+              index === draggedIndex ? styles.dragging : ""
+            }`}
+          >
+            {square}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default GridComponent;

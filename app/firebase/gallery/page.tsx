@@ -1,9 +1,11 @@
-"use client"
-
-import { useEffect, useState } from "react"
-import { db, storage } from "@/firebase/config"
+import { revalidatePath } from "next/cache"
+import { db } from "@/firebase/config"
+import { User } from "firebase/auth"
 import { doc, getDoc, updateDoc } from "firebase/firestore"
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
+
+import FirebaseNav from "@/components/firebase/Nav"
+
+import Images from "./Grid"
 
 const docID = "A8IlEuLSV8gfRP8WjiuDfahdbzm2"
 
@@ -20,8 +22,8 @@ async function fetchData() {
   }
 }
 
-async function myAction(data) {
-  // The `data` parameter should be a FormData object containing form inputs
+async function myAction(data: FormData) {
+  "use server"
   const displayName = data.get("displayName")
   const username = data.get("username")
 
@@ -37,136 +39,52 @@ async function myAction(data) {
   console.log("Profile created / updated successfully!")
 
   // Revalidate
+  // revalidatePath(`/dogs/${params.id}/edit`);
   revalidatePath(`/firebase/${docID}/view`)
 }
 
 export default function EditForm() {
-  const [images, setImages] = useState([])
-  const [todoData, setTodoData] = useState(null)
+  const fetchDataAndRender = async () => {
+    const todoData = await fetchData()
 
-  useEffect(() => {
-    const fetchDataAndRender = async () => {
-      const fetchedData = await fetchData()
+    return (
+      <>
+        <div>
+          <h1 className="bold mb-4 text-lg">
+            Create / Edit: {todoData?.displayName} Profile
+          </h1>
 
-      if (fetchedData && fetchedData.images) {
-        setImages(fetchedData.images)
-      }
+          <FirebaseNav />
 
-      setTodoData(fetchedData)
-    }
-
-    fetchDataAndRender()
-  }, [])
-
-  async function handleImageUpload(event) {
-    const files = event.target.files
-
-    try {
-      for (const file of files) {
-        // Upload the image to Firebase Storage
-        const storageRef = ref(storage, `images/${file.name}`)
-        await uploadBytes(storageRef, file)
-
-        // Get the download URL of the uploaded image
-        const downloadURL = await getDownloadURL(storageRef)
-
-        // Update the images state variable
-        setImages((prevImages) => [...prevImages, downloadURL])
-
-        // Update the Firestore document with the updated images array
-        const docRef = doc(db, "profiles", docID)
-        await updateDoc(docRef, {
-          images: [...images, downloadURL],
-        })
-      }
-
-      console.log("Images uploaded successfully!")
-    } catch (error) {
-      console.error("Error uploading image:", error)
-    }
-  }
-
-  return (
-    <>
-      <div>
-        <h1 className="bold mb-4 text-lg">
-          Create / Edit: {todoData?.displayName} Profile
-        </h1>
-
-        {/* Other form fields */}
-
-        <div className="grid grid-cols-3 gap-8">
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <input
-            name="images"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
+          <form action={myAction} className="flex flex-col gap-8">
+            <div className="flex flex-row justify-start gap-8">
+              <label>displayName</label>
+              <input
+                name="displayName"
+                type="text"
+                defaultValue={todoData?.displayName}
+                className="text-white"
+              />
+            </div>
+            <div className="flex flex-row gap-8">
+              <label>Username</label>
+              <input
+                name="username"
+                type="text"
+                defaultValue={todoData?.username}
+                className="text-white"
+              />
+            </div>
+            <button type="submit" className="bg-blue-500 p-3">
+              Save and Continue
+            </button>
+          </form>
         </div>
 
-        {images.length > 0 && (
-          <div>
-            <h2>Image Gallery:</h2>
-            <div>
-              {images.map((imageURL) => (
-                <img key={imageURL} src={imageURL} alt="Gallery" />
-              ))}
-            </div>
-          </div>
-        )}
+        <Images />
+      </>
+    )
+  }
 
-        <button type="submit" className="bg-blue-500 p-3">
-          Save and Continue
-        </button>
-      </div>
-    </>
-  )
+  return fetchDataAndRender()
 }
