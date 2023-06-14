@@ -51,7 +51,8 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          {/* <AuthProvider> */}
+          {/* <UserProvider> */}
+
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <NavTop />
             <main className="relative m-auto min-h-screen py-16 md:max-w-[1240px]">

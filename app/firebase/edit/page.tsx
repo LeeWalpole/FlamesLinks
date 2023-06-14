@@ -38,7 +38,7 @@ async function myAction(data: FormData) {
 
   // Revalidate
   // revalidatePath(`/dogs/${params.id}/edit`);
-  revalidatePath(`/firebase/${docID}/view`)
+  revalidatePath(`/firebase/create/gallery/`)
 }
 
 export default function EditForm() {

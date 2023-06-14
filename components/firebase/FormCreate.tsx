@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { db } from "@/firebase/config"
 import { getAuth } from "firebase/auth"
 import {
@@ -16,14 +17,15 @@ const CreateProfileForm: React.FC = () => {
   const [username, setUsername] = useState("")
   const [displayName, setDisplayName] = useState("")
   const [error, setError] = useState("")
-
+  const router = useRouter() // Access the router object
   useEffect(() => {
     // Check if user is authenticated
     const auth = getAuth()
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (!user) {
         // User not authenticated, redirect to step 1
-        window.location.href = "/firebase/join"
+        // window.location.href = "/firebase/join"
+        router.push("/profile/")
       }
     })
 
@@ -59,7 +61,8 @@ const CreateProfileForm: React.FC = () => {
       console.log("Profile created with ID: ", docRef.id)
 
       // Redirect to the update page
-      window.location.href = "/firebase/update"
+      // window.location.href = "/firebase/update"
+      router.push("/firebase/profile/")
     } catch (error) {
       console.error("Error creating profile: ", error)
     }

@@ -38,7 +38,7 @@ const GoogleAuthForm = () => {
         }
 
         // Redirect to the create profile page
-        router.push("/firebase/create")
+        router.push("/firebase/profile/create")
       } catch (error) {
         console.log(error)
       }

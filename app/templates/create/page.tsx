@@ -5,8 +5,6 @@ import { doc, getDoc, updateDoc } from "firebase/firestore"
 
 import FirebaseNav from "@/components/firebase/Nav"
 
-import Images from "./Grid"
-
 const docID = "A8IlEuLSV8gfRP8WjiuDfahdbzm2"
 
 async function fetchData() {
@@ -26,9 +24,7 @@ async function myAction(data: FormData) {
   "use server"
   const displayName = data.get("displayName")
   const username = data.get("username")
-
   const docRef = doc(db, "profiles", docID)
-
   const updateData = {
     displayName: displayName,
     username: username,
@@ -40,7 +36,8 @@ async function myAction(data: FormData) {
 
   // Revalidate
   // revalidatePath(`/dogs/${params.id}/edit`);
-  revalidatePath(`/firebase/${docID}/view`)
+  // revalidatePath(`/firebase/${docID}/view`)
+  revalidatePath(`/firebase/profile/`)
 }
 
 export default function EditForm() {
@@ -75,13 +72,12 @@ export default function EditForm() {
                 className="text-white"
               />
             </div>
-            <button type="submit" className="bg-blue-500 p-4">
-              Save Profile
+
+            <button type="submit" className="bg-blue-500 p-3">
+              Save and Continue
             </button>
           </form>
         </div>
-
-        <Images />
       </>
     )
   }
