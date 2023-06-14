@@ -6,8 +6,14 @@ import { ReactSortable } from "react-sortablejs"
 import GridAddItem from "./GridAddItem"
 import GridItem from "./GridItem"
 
+interface User {
+  id: number
+  name: string
+  imageURL?: string
+}
+
 const Grid: React.FC = () => {
-  const [users, setUsers] = useState<{ id: number; name: string }[]>([])
+  const [users, setUsers] = useState<User[]>([])
 
   // Fetching the data from typicode
   // and setting it to "users" state
@@ -31,6 +37,7 @@ const Grid: React.FC = () => {
       console.log(oldIndex, newIndex)
     }
   }
+
   return (
     <div className="rounded-3  border p-3 shadow">
       {users.length === 0 ? (
@@ -49,7 +56,11 @@ const Grid: React.FC = () => {
         >
           <>
             {users.map((user) => (
-              <GridItem key={user.id} user={user} />
+              <GridItem
+                key={user.id}
+                user={user}
+                imageURL="https://github.com/shadcn.png"
+              />
             ))}
             <GridAddItem />
           </>

@@ -4,14 +4,16 @@ interface GridItemProps {
   user: {
     id: number
     name: string
+    imageURL?: string
   }
+  imageURL?: string // Add the imageURL property to the GridItemProps interface
 }
 
-const GridItem: React.FC<GridItemProps> = ({ user }) => {
+const GridItem: React.FC<GridItemProps> = ({ user, imageURL }) => {
   return (
-    <div className="card rounded-3 ratio-1/1 overflow-hidden bg-slate-400 shadow-sm">
-      <div className="card-body ">
-        <h3 className=" h5 card-title m-0">{user.name}</h3>
+    <div className="grid-items card rounded-3 overflow-hidden shadow-sm">
+      <div className="card-body">
+        <h3 className="h5 card-title m-0">{user.name}</h3>
       </div>
       <div className="card-footer d-flex justify-content-between">
         <span>{user.id}</span>
@@ -19,6 +21,7 @@ const GridItem: React.FC<GridItemProps> = ({ user }) => {
           DRAG ME
         </span>
       </div>
+      {imageURL && <img src={imageURL} alt="User" />}
     </div>
   )
 }
