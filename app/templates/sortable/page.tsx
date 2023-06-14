@@ -9,7 +9,7 @@ import GridItem from "./GridItem"
 interface User {
   id: number
   name: string
-  imageURL?: string
+  imageURL?: string // Make the imageURL property optional
 }
 
 const Grid: React.FC = () => {
@@ -48,10 +48,10 @@ const Grid: React.FC = () => {
           setList={(newlist) => setUsers(newlist)}
           ghostClass="dropArea"
           handle=".dragHandle"
-          filter=".ignoreDrag"
+          // filter=".ignoreDrag"
           animation={300}
           preventOnFilter={true}
-          className="grid grid-cols-3 gap-8 "
+          className="m-auto grid w-96 grid-cols-3 gap-8 "
           onEnd={({ oldIndex, newIndex }) => onDragDropEnds(oldIndex, newIndex)}
         >
           <>
