@@ -25,11 +25,12 @@ const Grid: React.FC = () => {
   }, [])
 
   // Drag and Drop Handler
-  const onDragDropEnds = (oldIndex: number, newIndex: number) => {
-    console.log("Drag and drop other tasks")
-    console.log(oldIndex, newIndex)
+  const onDragDropEnds = (oldIndex?: number, newIndex?: number) => {
+    if (oldIndex !== undefined && newIndex !== undefined) {
+      console.log("Drag and drop other tasks")
+      console.log(oldIndex, newIndex)
+    }
   }
-
   return (
     <div className="rounded-3  border p-3 shadow">
       {users.length === 0 ? (
@@ -41,6 +42,7 @@ const Grid: React.FC = () => {
           ghostClass="dropArea"
           handle=".dragHandle"
           filter=".ignoreDrag"
+          animation={300}
           preventOnFilter={true}
           className="grid grid-cols-3 gap-8 "
           onEnd={({ oldIndex, newIndex }) => onDragDropEnds(oldIndex, newIndex)}
