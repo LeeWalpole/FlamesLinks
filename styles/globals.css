@@ -101,3 +101,8 @@
   height: 100%;
   background-color: #ebebeb;
 }
+
+.no-drag {
+  pointer-events: none;
+  /* Prevents grid items being dragged if no image is present*/
+}

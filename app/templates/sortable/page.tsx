@@ -18,15 +18,22 @@ const Grid: React.FC = () => {
   // Fetching the data from typicode
   // and setting it to "users" state
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts?_limit=10")
+    fetch("https://picsum.photos/v2/list?page=2&limit=7") // Fetching 7 images
       .then((res) => res.json())
       .then((data) =>
-        setUsers((prev) =>
-          data.map((item: any) => ({
+        setUsers((prev) => {
+          const usersWithImages = data.slice(0, 7).map((item: any) => ({
             id: item.id,
-            name: item.title,
+            name: item.author,
+            imageURL: item.download_url,
           }))
-        )
+          const emptyUsers = Array.from({ length: 2 }).map((_, index) => ({
+            id: index + 1,
+            name: "",
+            imageURL: undefined,
+          }))
+          return [...usersWithImages, ...emptyUsers]
+        })
       )
   }, [])
 
@@ -39,33 +46,25 @@ const Grid: React.FC = () => {
   }
 
   return (
-    <div className="rounded-3  border p-3 shadow">
-      {users.length === 0 ? (
+    <div className="rounded-3  border shadow">
+      <section>
         <GridAddItem />
-      ) : (
         <ReactSortable
           list={users}
           setList={(newlist) => setUsers(newlist)}
           ghostClass="dropArea"
           handle=".dragHandle"
-          // filter=".ignoreDrag"
           animation={300}
           preventOnFilter={true}
-          className="m-auto grid w-96 grid-cols-3 gap-8 "
+          className="m-auto grid w-96 grid-cols-3 gap-2"
           onEnd={({ oldIndex, newIndex }) => onDragDropEnds(oldIndex, newIndex)}
         >
-          <>
-            {users.map((user) => (
-              <GridItem
-                key={user.id}
-                user={user}
-                imageURL="https://github.com/shadcn.png"
-              />
-            ))}
-            <GridAddItem />
-          </>
+          {/* Render 9 grid items */}
+          {users.map((user) => (
+            <GridItem key={user.id} user={user} imageURL={user.imageURL} />
+          ))}
         </ReactSortable>
-      )}
+      </section>
     </div>
   )
 }
