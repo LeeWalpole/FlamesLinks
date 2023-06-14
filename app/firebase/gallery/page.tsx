@@ -76,7 +76,7 @@ export default function EditForm() {
               />
             </div>
             <button type="submit" className="bg-blue-500 p-4">
-              Save and Continue
+              Save Profile
             </button>
           </form>
         </div>
