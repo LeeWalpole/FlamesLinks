@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { db } from "@/firebase/config"
 import useAuth from "@/firebase/useAuth"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -50,6 +51,7 @@ const FormSchema = z.object({
 })
 
 export default function InputReactHookForm() {
+  const router = useRouter()
   const user = useAuth()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -86,6 +88,7 @@ export default function InputReactHookForm() {
         // delete data.socials // Remove the socials field from the main data object
         await updateDoc(profileRef, { ...data, socials: socialsData }) // Update the document with socials as a nested object
         setIsSubmitting(false)
+        router.push("/profile/create/step2")
       }
     } catch (error) {
       console.error("Error updating profile data:", error)
@@ -109,7 +112,7 @@ export default function InputReactHookForm() {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="username..." {...field} />
                   </FormControl>
                   <FormDescription>
                     This is your public display name.
@@ -125,7 +128,7 @@ export default function InputReactHookForm() {
                 <FormItem>
                   <FormLabel>Display Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="display name..." {...field} />
                   </FormControl>
                   <FormDescription>
                     This is your public display name.
@@ -169,9 +172,16 @@ export default function InputReactHookForm() {
               )}
             />
 
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Submit"}
-            </Button>
+            <section className="fixed bottom-0 left-0 z-50 mt-48 flex h-24 w-full border-t bg-background align-middle">
+              <div className="m-auto flex w-96 justify-between">
+                <Button variant="secondary" onClick={() => router.back()}>
+                  Go back
+                </Button>
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </Button>
+              </div>
+            </section>
           </form>
         </Form>
       )}

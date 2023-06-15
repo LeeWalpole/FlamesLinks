@@ -9,6 +9,8 @@ import { collection, doc, updateDoc } from "firebase/firestore"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { ItemInterface, ReactSortable } from "react-sortablejs"
 
+import { Button } from "@/components/ui/button"
+
 interface ImageItem extends ItemInterface {
   id: string
   file: File | null
@@ -213,17 +215,16 @@ const ImageUploadForm = () => {
         ))}
       </ReactSortable>
 
-      <div className="flex justify-between">
-        <button className="button-ghost p-3">Back</button>
-
-        <button
-          onClick={handleSaveImages}
-          disabled={saving}
-          className=" bg-blue-500 p-3"
-        >
-          {saving ? "Saving..." : "Save Gallery"}
-        </button>
-      </div>
+      <section className="fixed bottom-0 left-0 z-50 mt-48 flex h-24 w-full border-t bg-background align-middle">
+        <div className="m-auto flex w-96 justify-between">
+          <Button variant="secondary" onClick={() => router.back()}>
+            Go back
+          </Button>
+          <Button onClick={handleSaveImages} disabled={saving}>
+            {saving ? "Submitting..." : "Submit"}
+          </Button>
+        </div>
+      </section>
     </section>
   )
 }
