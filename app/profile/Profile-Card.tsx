@@ -1,7 +1,16 @@
 import Image from "next/image"
+import Link from "next/link"
 import placeholderImage from "@/public/placeholder.png"
 
 import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import Swiper from "@/components/Swiper"
 import { Icons } from "@/components/icons"
 
@@ -75,10 +84,74 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               {/* Second set of buttons */}
               <div className="cta-buttons mt-4 flex items-center justify-between px-4">
                 <div className="grid w-full grid-cols-2 gap-4">
-                  <Button>
-                    <Icons.link className="mr-2 h-5 w-5" />
-                    View My Links
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger className="w-full">
+                      <Button>
+                        <Icons.link className="mr-2 h-5 w-5" />
+                        View My Links
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="rounded-3xl border px-6 py-8">
+                      <nav>
+                        <Link
+                          href=""
+                          className="flex w-full items-center space-x-4 border-b p-4"
+                        >
+                          <Icons.tip className="h-6 w-6 text-brand-normal" />
+                          <div className="flex-1 space-y-1">
+                            <p className="text-md font-medium leading-none">
+                              Treat @username
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              Show your love and support.
+                            </p>
+                          </div>
+                        </Link>
+                        <Link
+                          href=""
+                          className="flex w-full items-center space-x-4 border-b p-4 opacity-50"
+                        >
+                          <Icons.message className="h-6 w-6 text-brand-normal" />
+                          <div className="flex-1 space-y-1">
+                            <p className="text-md font-medium leading-none">
+                              Send Private Message
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              *$0.50 / Message (Coming soon).
+                            </p>
+                          </div>
+                        </Link>
+                        <Link
+                          href=""
+                          className="flex w-full items-center space-x-4 border-b p-4 opacity-50"
+                        >
+                          <Icons.phone className="h-6 w-6 text-brand-normal" />
+                          <div className="flex-1 space-y-1">
+                            <p className="text-md font-medium leading-none">
+                              Voice Call (Coming soon).
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              *$0.50 / 60 Seconds (Coming soon).
+                            </p>
+                          </div>
+                        </Link>
+                        <Link
+                          href=""
+                          className="flex w-full items-center space-x-4  p-4 opacity-50"
+                        >
+                          <Icons.video className="h-6 w-6 text-brand-normal" />
+                          <div className="flex-1 space-y-1">
+                            <p className="text-md font-medium leading-none">
+                              Video Call
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              *$1.00 / 60 Seconds (Coming soon).
+                            </p>
+                          </div>
+                        </Link>
+                      </nav>
+                    </DialogContent>
+                  </Dialog>
 
                   <Button>
                     <Icons.tip className="mr-2 h-6 w-6" />
