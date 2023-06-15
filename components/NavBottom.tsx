@@ -29,7 +29,10 @@ export default function NavBottom() {
           )}
         </Link>
 
-        <Link href="/" className="flex h-full items-center justify-center ">
+        <Link
+          href="/profile/create/"
+          className="flex h-full items-center justify-center "
+        >
           {/* <Icons.twitter className="h-5 w-5 fill-current" /> */}
           <Image
             className="h-8 w-auto "

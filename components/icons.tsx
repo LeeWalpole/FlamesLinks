@@ -4,6 +4,7 @@ import {
   CircleEllipsis,
   Instagram,
   LucideProps,
+  Mail,
   Moon,
   Search,
   SunMedium,
@@ -23,6 +24,7 @@ export const Icons = {
   instagram: Instagram,
   twitter: Twitter,
   twitch: Twitch,
+  google: Mail,
   logo: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path

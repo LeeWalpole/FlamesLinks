@@ -54,29 +54,17 @@ export default function NavTop() {
     >
       <nav className="grid w-full auto-cols-fr grid-cols-3  px-2">
         <div className="flex h-16 w-full items-center justify-start">
-          {pathname === "/profile" ? (
-            <button
-              type="button"
-              className="h-full  px-1"
-              onClick={() => router.back()}
-            >
-              <Icons.arrowLeft className="h-6 w-6 " />
-            </button>
-          ) : (
-            <Link
-              href="/"
-              className="flex h-full items-center justify-center  px-2"
-            >
-              {/* <Icons.twitter className="h-5 w-5 fill-current" /> */}
-              <Image
-                className="h-8 w-auto "
-                src="/flames-icon.webp"
-                height={100}
-                width={100}
-                alt="Flames"
-              />
-            </Link>
-          )}
+          <Sheet>
+            <SheetTrigger className="h-full px-2">
+              <Icons.nav className="h-6 w-6 " />
+            </SheetTrigger>
+            <SheetContent position="left" size="default">
+              {/* <SheetTitle></SheetTitle> */}
+              {/* <SheetDescription>
+              </SheetDescription> */}
+              <NavSide />
+            </SheetContent>
+          </Sheet>
         </div>
         <div className="flex h-16 w-full items-center  justify-center"></div>
         <div className=" flex h-16 w-full items-center justify-end pr-1">
@@ -84,7 +72,7 @@ export default function NavTop() {
             <SheetTrigger className="h-full px-2">
               <Icons.nav className="h-6 w-6 " />
             </SheetTrigger>
-            <SheetContent position="right" size="default">
+            <SheetContent position="left" size="default">
               {/* <SheetTitle></SheetTitle> */}
               {/* <SheetDescription>
               </SheetDescription> */}

@@ -3,13 +3,11 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { db } from "@/firebase/config"
-import {
-  GoogleAuthProvider,
-  getAuth,
-  onAuthStateChanged,
-  signInWithPopup,
-} from "firebase/auth"
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
 import { collection, doc, getDoc, setDoc } from "firebase/firestore"
+
+import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 const GoogleAuthForm = () => {
   const router = useRouter()
@@ -38,7 +36,7 @@ const GoogleAuthForm = () => {
         }
 
         // Redirect to the create profile page
-        router.push("/firebase/profile/create")
+        router.push("/profile/edit")
       } catch (error) {
         console.log(error)
       }
@@ -59,10 +57,12 @@ const GoogleAuthForm = () => {
   }, [router])
 
   return (
-    <div>
-      <h1>Google Auth Form</h1>
-      <button id="login-button">Login with Google</button>
-    </div>
+    <Button variant="outline" id="login-button">
+      {" "}
+      {/* Add id="login-button" to the Button component */}
+      <Icons.google className="mr-2 h-4 w-4" />
+      Google
+    </Button>
   )
 }
 

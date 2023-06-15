@@ -1,3 +1,6 @@
+import Image from "next/image"
+import placeholderImage from "@/public/placeholder.png"
+
 import { Button } from "@/components/ui/button"
 import Swiper from "@/components/Swiper"
 import { Icons } from "@/components/icons"
@@ -25,17 +28,40 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   const isCardStyle = style === "card" // Check if style is 'card'
   const isCardFull = style === "full" // Check if style is 'full'
   const isCarousel = style === "carousel" // Check if style is 'full'
+
+  const renderSwiper =
+    images.length > 0 ? (
+      <Swiper
+        shuffle={shuffle}
+        images={images}
+        imageClassName="object-fill w-full h-full aspect-[1/1]"
+      />
+    ) : (
+      <Image
+        height={640}
+        width={640}
+        src={placeholderImage}
+        alt="Flames Placeholder"
+        className="aspect-[1/1] h-full w-full object-fill opacity-20"
+      />
+    )
+
   return (
     <>
       <section className="relative m-auto flex w-full flex-row  sm:w-96 ">
         <article className="w-full ">
-          <figure className="relative aspect-[1/1] w-full">
+          {/* <figure className="relative aspect-[1/1] w-full">
             <Swiper
               shuffle={shuffle}
               images={images}
               imageClassName="object-fill w-full h-full aspect-[1/1]"
             />
+          </figure> */}
+
+          <figure className="relative aspect-[1/1] w-full">
+            {renderSwiper}
           </figure>
+
           <ProfileHeader
             username={username}
             displayName={displayName}

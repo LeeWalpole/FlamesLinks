@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { db } from "@/firebase/config"
 import useAuth from "@/firebase/useAuth"
-import { collection, doc, getDoc } from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore"
 
 import ProfileCard from "./Profile-Card"
 
@@ -23,10 +23,7 @@ export default function ProfilePage() {
           const data = docSnap.data()
           setDisplayName(data.displayName)
           setUsername(data.username)
-          setImages(data.images)
-          if (data.images && data.images.length > 0) {
-            setAvatarSrc(data.images[0]) // Set the first image URL as the `avatarSrc`
-          }
+          setImages(data.images || []) // Set an empty array if images are not available
         }
       }
     }

@@ -5,8 +5,8 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { db, storage } from "@/firebase/config"
 import useAuth from "@/firebase/useAuth"
-import { doc, getDoc, updateDoc } from "firebase/firestore"
-import { getDownloadURL, ref } from "firebase/storage"
+import { collection, doc, updateDoc } from "firebase/firestore"
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { ItemInterface, ReactSortable } from "react-sortablejs"
 
 interface ImageItem extends ItemInterface {
@@ -16,46 +16,10 @@ interface ImageItem extends ItemInterface {
 
 const ImageUploadForm = () => {
   const user = useAuth()
+
   const [images, setImages] = useState<ImageItem[]>([])
   const [gridItems, setGridItems] = useState<ItemInterface[]>([])
   const router = useRouter() // Access the router object
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const docRef = doc(db, "profiles", user?.uid ?? "")
-        const docSnap = await getDoc(docRef)
-        if (docSnap.exists()) {
-          const imageData = docSnap.data()?.images
-          if (Array.isArray(imageData) && imageData.length > 0) {
-            const downloadURLPromises = imageData.map((imageUrl) =>
-              getDownloadURL(ref(storage, imageUrl))
-            )
-            const downloadURLs = await Promise.all(downloadURLPromises)
-            const firebaseImages = downloadURLs.map((url) => ({
-              id: url,
-              file: null,
-            }))
-            const initialGridItems = [...Array(9)].map((_, index) => {
-              if (firebaseImages[index]) {
-                return firebaseImages[index]
-              } else {
-                return {
-                  id: `placeholder-${index}`,
-                  file: null,
-                }
-              }
-            })
-            setGridItems(initialGridItems)
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching images from Firebase:", error)
-      }
-    }
-
-    fetchImages()
-  }, [user])
 
   useEffect(() => {
     // Generate the initial grid items with empty placeholders
@@ -65,6 +29,39 @@ const ImageUploadForm = () => {
     }))
     setGridItems(initialGridItems)
   }, [])
+
+  const [saving, setSaving] = useState(false)
+  const handleSaveImages = async () => {
+    try {
+      setSaving(true) // Update the saving state to true
+
+      const uploadedImages = []
+
+      for (const image of images) {
+        if (image.file) {
+          const storageRef = ref(storage, `images/${image.id}`)
+          await uploadBytes(storageRef, image.file)
+          const downloadURL = await getDownloadURL(storageRef)
+          uploadedImages.push(downloadURL)
+        }
+      }
+
+      console.log("User UID:", user?.uid)
+      console.log("Uploaded Images:", uploadedImages)
+
+      const docRef = doc(db, "profiles", user?.uid ?? "")
+
+      //   const docRef = doc(db, "profiles", "A8IlEuLSV8gfRP8WjiuDfahdbzm2")
+      //
+      await updateDoc(docRef, { images: uploadedImages })
+      console.log("Images saved to Firebase")
+      router.push("/profile/")
+    } catch (error) {
+      console.error("Error saving images to Firebase:", error)
+    } finally {
+      setSaving(false) // Update the saving state back to false
+    }
+  }
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files
@@ -108,54 +105,57 @@ const ImageUploadForm = () => {
     })
     setGridItems((prevGridItems) => {
       const updatedGridItems = [...prevGridItems]
-      updatedGridItems[index] = {
-        id: `placeholder-${index}`,
-        file: null,
-      }
+      updatedGridItems[index] = { id: `placeholder-${index}`, file: null }
       return updatedGridItems
     })
   }
 
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const docRef = doc(db, "profiles", user?.uid ?? "")
-        const docSnap = await getDoc(docRef)
-        if (docSnap.exists()) {
-          const imageData = docSnap.data()?.images
-          if (Array.isArray(imageData) && imageData.length > 0) {
-            const downloadURLPromises = imageData.map((imageUrl) =>
-              getDownloadURL(ref(storage, imageUrl))
-            )
-            const downloadURLs = await Promise.all(downloadURLPromises)
-            const firebaseImages = downloadURLs.map((url) => ({
-              id: url, // Add the 'id' property with the URL as its value
-              src: url,
-              file: null,
-            }))
-            const initialGridItems = [...Array(9)].map((_, index) => {
-              if (firebaseImages[index]) {
-                return firebaseImages[index]
-              } else {
-                return {
-                  id: `placeholder-${index}`,
-                  src: "", // Set empty 'src' for placeholder images
-                  file: null,
-                }
-              }
-            })
-            setGridItems(initialGridItems)
-          }
+    // FileReader API for image preview
+    const previewImages = async () => {
+      const previewPromises = images.map((item) => {
+        if (item.file) {
+          return new Promise<string>((resolve, reject) => {
+            const reader = new FileReader()
+            reader.onload = () => resolve(reader.result as string)
+            reader.onerror = reject
+            reader.readAsDataURL(item.file as File)
+          })
+        } else {
+          return Promise.resolve("")
         }
+      })
+      try {
+        const imagePreviews = await Promise.all(previewPromises)
+        // Use imagePreviews as needed (e.g., display them in UI)
+        console.log(imagePreviews)
       } catch (error) {
-        console.error("Error fetching images from Firebase:", error)
+        console.log("Error occurred while previewing images:", error)
       }
     }
 
-    fetchImages()
-  }, [user])
+    previewImages()
+  }, [images])
+
   return (
     <section>
+      {/* <label htmlFor="image-upload" className="cursor-pointer">
+        <button
+          type="button"
+          className="mb-8 h-16 w-full rounded-full bg-blue-500 p-4 text-white"
+        >
+          Click to upload images
+        </button>
+        <input
+          id="image-upload"
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleImageUpload}
+          className="hidden"
+        />
+      </label> */}
+
       <label htmlFor="image-upload" className="cursor-pointer">
         <input
           id="image-upload"
@@ -191,7 +191,7 @@ const ImageUploadForm = () => {
             {item.file ? (
               <>
                 <Image
-                  src={item.src} // Use 'src' property instead of 'id'
+                  src={URL.createObjectURL(item.file)}
                   alt={`Image ${index + 1}`}
                   className="h-full w-full object-cover"
                   width={100}
@@ -216,7 +216,13 @@ const ImageUploadForm = () => {
       <div className="flex justify-between">
         <button className="button-ghost p-3">Back</button>
 
-        <button className="bg-blue-500 p-3">Save Gallery</button>
+        <button
+          onClick={handleSaveImages}
+          disabled={saving}
+          className=" bg-blue-500 p-3"
+        >
+          {saving ? "Saving..." : "Save Gallery"}
+        </button>
       </div>
     </section>
   )

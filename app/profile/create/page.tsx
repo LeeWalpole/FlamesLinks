@@ -1,81 +1,67 @@
-"use client"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import AuthGoogle from "@/components/firebase/AuthGoogle"
+import { Icons } from "@/components/icons"
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
-import { db } from "@/firebase/config"
-import useAuth from "@/firebase/useAuth"
-import { doc, getDoc, updateDoc } from "firebase/firestore"
-
-export default function ProfileForm() {
-  const router = useRouter() // Access the router object
-  const [displayName, setDisplayName] = useState("")
-  const [username, setUsername] = useState("")
-  const user = useAuth()
-  const [saving, setSaving] = useState(false)
-
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      if (user) {
-        const profileRef = doc(db, "profiles", user.uid)
-        const profileSnapshot = await getDoc(profileRef)
-        if (profileSnapshot.exists()) {
-          const profileData = profileSnapshot.data()
-          setDisplayName(profileData.displayName || "") // Set display name if exists, or empty string if not
-          setUsername(profileData.username || "") // Set username if exists, or empty string if not
-        }
-      }
-    }
-
-    fetchUserProfile()
-  }, [user])
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    if (user) {
-      const profileData = {
-        displayName,
-        username,
-      }
-
-      const profileRef = doc(db, "profiles", user.uid)
-
-      try {
-        setSaving(true)
-        await updateDoc(profileRef, profileData) // Use updateDoc instead of setDoc
-        console.log("Profile updated successfully!")
-        router.push("/profile/create/gallery/")
-      } catch (error) {
-        console.error("Error updating profile:", error)
-      } finally {
-        setSaving(false)
-      }
-    }
-  }
-
+export default function SignupPage() {
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Display Name:
-        <input
-          type="text"
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-        />
-      </label>
+    <>
+      <Card>
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl">Create an account</CardTitle>
+          <CardDescription>
+            Enter your email below to create your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <div className="grid grid-cols-2 gap-6">
+            <Button variant="outline">
+              <Icons.gitHub className="mr-2 h-4 w-4" />
+              Github
+            </Button>
+            <AuthGoogle />
+          </div>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" placeholder="m@example.com" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="password">Password</Label>
+            <Input id="password" type="password" />
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button className="w-full">Create account</Button>
+        </CardFooter>
+      </Card>
 
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
+      <section>
+        <div className=",e">or</div>
 
-      <button type="submit" disabled={saving}>
-        {saving ? "Saving..." : "Save Profile"}
-      </button>
-    </form>
+        <div className="flex w-full max-w-sm items-center space-x-2">
+          <Input type="email" placeholder="Email" />
+          <Button type="submit">Ignore</Button>
+        </div>
+      </section>
+    </>
   )
 }
