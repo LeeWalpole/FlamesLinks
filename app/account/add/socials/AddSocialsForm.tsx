@@ -90,10 +90,6 @@ export default function InputReactHookForm() {
 
   return (
     <>
-      <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-        <div>ID: {user ? user.uid : "No user"}</div>
-      </section>
-
       {user && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -131,15 +127,17 @@ export default function InputReactHookForm() {
               )}
             />
 
-            <section className="fixed bottom-0 left-0 z-50 mt-48 flex h-24 w-full border-t bg-background align-middle">
-              <div className="m-auto flex w-96 justify-between">
-                <Button variant="secondary" onClick={() => router.back()}>
-                  Go back
-                </Button>
-                <Button type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Saving socials..." : "Save Socials"}
-                </Button>
-              </div>
+            <section className="grid grid-cols-2 gap-4 border-t bg-background pt-4 align-middle">
+              <Button
+                size="lg"
+                variant="secondary"
+                onClick={() => router.back()}
+              >
+                Go back
+              </Button>
+              <Button size="lg" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Saving socials..." : "Next"}
+              </Button>
             </section>
           </form>
         </Form>

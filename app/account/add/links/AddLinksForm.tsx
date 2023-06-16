@@ -12,6 +12,7 @@ import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
+import { Icons } from "@/components/icons"
 import {
   Form,
   FormControl,
@@ -90,76 +91,79 @@ export default function InputReactHookForm() {
     }
   }
 
+  const removeLink = (index: number) => {
+    const updatedLinks = [...(form.getValues("weblinks") || [])]
+    updatedLinks.splice(index, 1)
+    form.setValue("weblinks", updatedLinks)
+  }
+
   return (
     <>
-      <Button
-        type="button"
-        variant="link"
-        size="sm"
-        className="mt-1"
-        onClick={() => append({ linkUrl: "", linkText: "" })}
-      >
-        Add Some Web Links
-      </Button>
-
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div>
-            {fields.map((field, index) => (
-              <>
-                {" "}
-                <div key={field.id} className="space-y-2">
-                  <FormField
-                    control={form.control}
-                    name={`weblinks.${index}.linkUrl`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>URL</FormLabel>
-                        <FormDescription>
-                          Add the URL for the link.
-                        </FormDescription>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name={`weblinks.${index}.linkText`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Link Text</FormLabel>
-                        <FormDescription>
-                          Add the text for the link.
-                        </FormDescription>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <Separator className="my-8" />
-              </>
-            ))}
-          </div>
+          {fields.map((field, index) => (
+            <>
+              <div
+                key={field.id}
+                className="relative mb-2 flex flex-row gap-4 rounded border p-4"
+              >
+                <button
+                  type="button"
+                  className="absolute right-2 top-2  text-red-500"
+                  onClick={() => removeLink(index)}
+                >
+                  <Icons.close className="h-5 w-5" />
+                </button>
 
-          <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-            <div>ID: {user ? user.uid : "No user"}</div>
-          </section>
+                <FormField
+                  control={form.control}
+                  name={`weblinks.${index}.linkText`}
+                  render={({ field }) => (
+                    <FormItem className="w-1/2">
+                      <FormLabel>Link Title</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name={`weblinks.${index}.linkUrl`}
+                  render={({ field }) => (
+                    <FormItem className="w-1/2">
+                      <FormLabel>URL</FormLabel>
 
-          <section className="fixed bottom-0 left-0 z-50 mt-48 flex h-24 w-full border-t bg-background align-middle">
-            <div className="m-auto flex w-96 justify-between">
-              <Button variant="secondary" onClick={() => router.back()}>
-                Go back
-              </Button>
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Saving Web Links..." : "Save Web Links"}
-              </Button>
-            </div>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </>
+          ))}
+
+          <Button
+            type="button"
+            variant="secondary"
+            size="lg"
+            className="w-full"
+            onClick={() => append({ linkUrl: "", linkText: "" })}
+          >
+            <Icons.add className="mr-2 h-5 w-5" />
+            Add more web links
+          </Button>
+
+          <section className="grid grid-cols-2 gap-4 border-t bg-background pt-4 align-middle">
+            <Button size="lg" variant="secondary" onClick={() => router.back()}>
+              Go back
+            </Button>
+            <Button size="lg" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Saving" : "Next"}
+            </Button>
           </section>
         </form>
       </Form>

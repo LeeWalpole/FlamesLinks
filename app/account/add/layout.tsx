@@ -1,3 +1,11 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import NavOnboard from "@/app/account/add/NavOnboard"
 
 export default function DashboardLayout({
@@ -6,13 +14,8 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <section className="m-auto w-96">
-      {/* Include shared UI here e.g. a header or sidebar */}
-      <header>
-        <h1>Header</h1>
-        <p>Next step description goes here...</p>
-      </header>
-      <div className="">{children}</div>
+    <section className="m-auto flex h-screen items-center justify-center">
+      <main className="w-[640px]">{children}</main>
     </section>
   )
 }

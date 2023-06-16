@@ -16,19 +16,15 @@ import { Icons } from "@/components/icons"
 export default function SignupPage() {
   return (
     <>
-      <Card>
+      <Card className="text-center">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Create an account</CardTitle>
+          <CardTitle className="text-2xl">Create Profile</CardTitle>
           <CardDescription>
             Enter your email below to create your account
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <div className="grid grid-cols-2 gap-6">
-            <Button variant="outline">
-              <Icons.gitHub className="mr-2 h-4 w-4" />
-              Github
-            </Button>
+          <div className="grid grid-cols-1 gap-6">
             <AuthGoogle />
           </div>
           <div className="relative">
@@ -42,27 +38,13 @@ export default function SignupPage() {
             </div>
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" />
+            <Input id="email" type="email" placeholder="your@email.com" />
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Create account</Button>
+          <Button className="w-full">Create Profile</Button>
         </CardFooter>
       </Card>
-
-      <section>
-        <div className=",e">or</div>
-
-        <div className="flex w-full max-w-sm items-center space-x-2">
-          <Input type="email" placeholder="Email" />
-          <Button type="submit">Ignore</Button>
-        </div>
-      </section>
     </>
   )
 }

@@ -36,7 +36,7 @@ const GoogleAuthForm = () => {
         }
 
         // Redirect to the create profile page
-        router.push("/profile/edit")
+        router.push("/account/add/profile/")
       } catch (error) {
         console.log(error)
       }
@@ -57,11 +57,11 @@ const GoogleAuthForm = () => {
   }, [router])
 
   return (
-    <Button variant="outline" id="login-button">
+    <Button variant="outline" id="login-button" size="lg">
       {" "}
       {/* Add id="login-button" to the Button component */}
       <Icons.google className="mr-2 h-4 w-4" />
-      Google
+      Sign Up with Google
     </Button>
   )
 }

@@ -42,12 +42,12 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
         <head></head>
         <body
           className={cn(
-            "min-h-screen bg-background pb-1 font-sans antialiased",
+            "min-h-screen bg-background  font-sans antialiased",
             fontSans.variable
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <main className="relative m-auto min-h-screen  md:max-w-[1240px]">
+            <main className="relative m-auto  md:max-w-[1240px]">
               {children}
             </main>
             {modal}
