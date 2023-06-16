@@ -1,0 +1,143 @@
+import Image from "next/image"
+import placeholderImage from "@/public/placeholder.png"
+
+import { Button } from "@/components/ui/button"
+import Swiper from "@/components/Swiper"
+import { Icons } from "@/components/icons"
+
+import ProfileHeader from "./Profile-Header"
+
+interface ProfileCardProps {
+  images: string[]
+  style?: "simple" | "card" | "full" | "carousel"
+  shuffle?: boolean
+  displayName: string
+  username: string
+  avatarSrc: string
+}
+
+const ProfileCard: React.FC<ProfileCardProps> = ({
+  images,
+  style = "default",
+  shuffle,
+  displayName,
+  username,
+  avatarSrc,
+}) => {
+  const isSimpleStyle = style === "simple" // Check if style is 'simple'
+  const isCardStyle = style === "card" // Check if style is 'card'
+  const isCardFull = style === "full" // Check if style is 'full'
+  const isCarousel = style === "carousel" // Check if style is 'full'
+
+  const renderSwiper =
+    images.length > 0 ? (
+      <Swiper
+        shuffle={shuffle}
+        images={images}
+        imageClassName="object-fill w-full h-full aspect-[1/1]"
+      />
+    ) : (
+      <Image
+        height={640}
+        width={640}
+        src={placeholderImage}
+        alt="Flames Placeholder"
+        className="aspect-[1/1] h-full w-full object-fill opacity-20"
+      />
+    )
+
+  return (
+    <>
+      <section className="relative m-auto flex w-full flex-row  sm:w-96 ">
+        <article className="w-full ">
+          {/* <figure className="relative aspect-[1/1] w-full">
+            <Swiper
+              shuffle={shuffle}
+              images={images}
+              imageClassName="object-fill w-full h-full aspect-[1/1]"
+            />
+          </figure> */}
+
+          <figure className="relative aspect-[1/1] w-full">
+            {renderSwiper}
+          </figure>
+
+          <ProfileHeader
+            username={username}
+            displayName={displayName}
+            avatarSrc={avatarSrc}
+          />
+
+          {/* <ProfileTabs /> */}
+          {isCardFull && (
+            // Render the following elements only when the style is 'full'
+            <>
+              {/* Second set of buttons */}
+              <div className="cta-buttons mt-4 flex items-center justify-between px-4">
+                <div className="grid w-full grid-cols-2 gap-4">
+                  <Button>
+                    <Icons.link className="mr-2 h-5 w-5" />
+                    View My Links
+                  </Button>
+
+                  <Button>
+                    <Icons.tip className="mr-2 h-6 w-6" />
+                    Tip Me
+                  </Button>
+                </div>
+              </div>
+              {/* First set of buttons */}
+              <div className="cta-buttons flex items-center justify-between p-4">
+                <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
+                  <Button variant="secondary">
+                    <Icons.instagram className="h-6 w-6" />
+                  </Button>
+                  <Button variant="secondary">
+                    <Icons.twitter className="h-6 w-6" />
+                  </Button>
+                  <Button variant="secondary">
+                    <Icons.twitch className="h-6 w-6" />
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+          {!isCardStyle && !isSimpleStyle && !isCardFull && (
+            // Render the following elements when style is neither 'card', 'simple', nor 'full'
+            <>
+              {/* First set of buttons */}
+              <div className="cta-buttons flex items-center justify-between p-4">
+                <div className="grid-cols-auto grid w-full grid-flow-col gap-3">
+                  <Button variant="secondary">
+                    <Icons.instagram className="h-6 w-6" />
+                  </Button>
+                  <Button variant="secondary">
+                    <Icons.twitter className="h-6 w-6" />
+                  </Button>
+                  <Button variant="secondary">
+                    <Icons.twitch className="h-6 w-6" />
+                  </Button>
+                </div>
+              </div>
+              {/* Second set of buttons */}
+              <div className="cta-buttons flex items-center justify-between p-4">
+                <div className="grid-cols-auto grid w-full grid-flow-row gap-3">
+                  <Button>
+                    <Icons.email className="mr-2 h-4 w-4" />
+                    mywebsite.com
+                  </Button>
+                  <Button>
+                    <Icons.link className="mr-2 h-4 w-4" />
+                    mywebsite.com
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </article>
+      </section>
+    </>
+  )
+}
+
+export default ProfileCard

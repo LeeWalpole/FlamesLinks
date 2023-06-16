@@ -57,7 +57,7 @@ const ImageUploadForm = () => {
       //
       await updateDoc(docRef, { images: uploadedImages })
       console.log("Images saved to Firebase")
-      router.push("/profile/")
+      router.push("/dashboard/")
     } catch (error) {
       console.error("Error saving images to Firebase:", error)
     } finally {
@@ -221,7 +221,7 @@ const ImageUploadForm = () => {
             Go back
           </Button>
           <Button onClick={handleSaveImages} disabled={saving}>
-            {saving ? "Submitting..." : "Submit"}
+            {saving ? "Building Profile..." : "Finish Profile"}
           </Button>
         </div>
       </section>

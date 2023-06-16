@@ -22,11 +22,9 @@ import {
 } from "@/components/react-hook-form/form"
 
 // This can come from your database or API.
-type ProfileFormValues = z.infer<typeof FormSchema>
+type AddSocialsForm = z.infer<typeof FormSchema>
 
-const defaultValues: Partial<ProfileFormValues> = {
-  username: "",
-  displayName: "",
+const defaultValues: Partial<AddSocialsForm> = {
   socials: {
     instagram: "",
     twitter: "",
@@ -34,12 +32,6 @@ const defaultValues: Partial<ProfileFormValues> = {
 }
 
 const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  displayName: z.string().min(2, {
-    message: "Display Name Here",
-  }),
   socials: z.object({
     instagram: z.string().min(2, {
       message: "instagram",
@@ -79,7 +71,7 @@ export default function InputReactHookForm() {
     getProfileData()
   }, [form, user])
 
-  async function onSubmit(data: ProfileFormValues) {
+  async function onSubmit(data: AddSocialsForm) {
     try {
       if (user && user.uid) {
         setIsSubmitting(true)
@@ -88,7 +80,7 @@ export default function InputReactHookForm() {
         // delete data.socials // Remove the socials field from the main data object
         await updateDoc(profileRef, { ...data, socials: socialsData }) // Update the document with socials as a nested object
         setIsSubmitting(false)
-        router.push("/profile/create/step2")
+        router.push("/account/add/links/")
       }
     } catch (error) {
       console.error("Error updating profile data:", error)
@@ -105,39 +97,6 @@ export default function InputReactHookForm() {
       {user && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input placeholder="username..." {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="displayName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Display Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="display name..." {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
             <FormField
               control={form.control}
               name="socials.instagram" // Update the field name to reflect the nested structure
@@ -178,7 +137,7 @@ export default function InputReactHookForm() {
                   Go back
                 </Button>
                 <Button type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Submitting..." : "Submit"}
+                  {isSubmitting ? "Saving socials..." : "Save Socials"}
                 </Button>
               </div>
             </section>

@@ -25,9 +25,13 @@ export default function ProfilePage() {
         if (docSnap.exists()) {
           const data = docSnap.data()
           setDisplayName(data.displayName)
-          setAvatarSrc(data.images[0] || [])
-          setUsername(data.username)
           setImages(data.images || []) // Set an empty array if images are not available
+          if (data.images && data.images.length > 0) {
+            setAvatarSrc(data.images[0])
+          } else {
+            setAvatarSrc("")
+          }
+          setUsername(data.username)
         }
         setIsLoading(false) // Set loading state to false after data is loaded
       }

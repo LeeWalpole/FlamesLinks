@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation"
 import { SheetTrigger } from "@/components/ui/sheet"
 import Card from "@/components/Card"
 import { Icons } from "@/components/icons"
-import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function NavSide() {
   const pathname = usePathname()
@@ -45,8 +44,6 @@ export default function NavSide() {
         </Link>
       </nav>
       <br></br>
-
-      <ThemeToggle />
     </>
   )
 }
