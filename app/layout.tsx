@@ -53,7 +53,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
           <AuthProvider>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
               <NavTop />
-              <main className="relative m-auto  md:max-w-[1240px]">
+              <main className="relative m-auto flex min-h-screen w-full justify-center pb-32 md:max-w-[1240px]">
                 {children}
               </main>
               <NavBottom />

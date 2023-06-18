@@ -44,8 +44,8 @@ export default function ProfilePage() {
 
   return (
     <>
-      <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-        <div className="relative top-[-4rem] flex justify-center">
+      <section className="container grid items-center gap-6 md:py-10">
+        <div className="relative flex justify-center">
           {isLoading ? ( // Show skeleton if isLoading is true
             <div className="flex flex-col items-center gap-8 space-x-4">
               <Skeleton className="h-32 w-32 rounded-full" />
