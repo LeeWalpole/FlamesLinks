@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 body {
+  overflow-y: scroll;
+  scrollbar-width: thin; /* or 'none' */
+  scrollbar-color: transparent transparent;
   scrollbar-gutter: stable both-edges;
 }
 

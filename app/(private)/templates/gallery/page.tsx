@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { db } from "@/firebase/config"
 import { doc, getDoc, updateDoc } from "firebase/firestore"
+
+import { db } from "@/lib/firebase/config"
 
 import styles from "./grid.module.css"
 

@@ -1,7 +1,8 @@
 "use client"
 
-import useAuth from "@/firebase/useAuth"
 import { User } from "firebase/auth"
+
+import useAuth from "@/lib/firebase/useAuth"
 
 const FirebaseNav = (): JSX.Element => {
   const user: User | null = useAuth()

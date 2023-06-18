@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { db } from "@/firebase/config"
 import { getAuth } from "firebase/auth"
 import {
   addDoc,
@@ -12,6 +11,8 @@ import {
   query,
   where,
 } from "firebase/firestore"
+
+import { db } from "@/lib/firebase/config"
 
 const CreateProfileForm: React.FC = () => {
   const [username, setUsername] = useState("")

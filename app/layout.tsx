@@ -3,8 +3,12 @@ import { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
+import { AuthProvider } from "@/lib/firebase/AuthProvider"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import NavBottom from "@/components/NavBottom"
+// import NavLeft from "@/components/NavLeft"
+import NavTop from "@/components/NavTop"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -46,14 +50,18 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <main className="relative m-auto  md:max-w-[1240px]">
-              {children}
-            </main>
-            {modal}
-            <TailwindIndicator />
-          </ThemeProvider>
-          <Analytics />
+          <AuthProvider>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+              <NavTop />
+              <main className="relative m-auto  md:max-w-[1240px]">
+                {children}
+              </main>
+              <NavBottom />
+              {modal}
+              <TailwindIndicator />
+            </ThemeProvider>
+            <Analytics />
+          </AuthProvider>
         </body>
       </html>
     </>

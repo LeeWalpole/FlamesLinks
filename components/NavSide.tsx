@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { SheetTrigger } from "@/components/ui/sheet"
 import Card from "@/components/Card"
+import SignInOutToggle from "@/components/firebase/SignInOutToggle"
 import { Icons } from "@/components/icons"
 
 export default function NavSide() {
@@ -42,6 +43,9 @@ export default function NavSide() {
             Profile
           </SheetTrigger>
         </Link>
+        <div>
+          <SignInOutToggle />
+        </div>
       </nav>
       <br></br>
     </>
